@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import webVideo from "@/assets/web.mp4";
+import webVideo from "@/assets/web1.webm";
 import { SocialMediaIcons } from "@/components/SocialMediaIcons";
 
 export const HeroSection = () => {

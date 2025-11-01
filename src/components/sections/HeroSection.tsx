@@ -100,7 +100,7 @@ export const HeroSection = () => {
           </h1>
         </div>
 
-        <div className="absolute right-[20%] top-[45%] -translate-y-1/2">
+        <div className="absolute right-[20%] top-[45%] -translate-y-1/2 macbook:right-[16%]">
           <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-serif leading-tight text-right">
             Everything<br />
             better

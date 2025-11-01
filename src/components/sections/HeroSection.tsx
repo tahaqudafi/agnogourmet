@@ -93,8 +93,6 @@ export const HeroSection = () => {
 
       {/* Hero Text Overlay */}
       <div className="relative z-10 w-full h-full flex items-center justify-center">
-        {/* Temporarily hidden - "Olive oil makes everything better" text */}
-        {/* 
         <div className="absolute left-[23%] top-[45%] -translate-y-1/2">
           <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-serif leading-tight text-left">
             Olive oil<br />
@@ -108,7 +106,6 @@ export const HeroSection = () => {
             better
           </h1>
         </div>
-        */}
       </div>
 
       {/* Social Media Icons */}

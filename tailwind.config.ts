@@ -10,7 +10,6 @@ export default {
       padding: "2rem",
       screens: {
         "2xl": "1400px",
-        "macbook": "1440px",
       },
     },
     extend: {

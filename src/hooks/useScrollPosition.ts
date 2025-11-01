@@ -3,21 +3,29 @@ import { useState, useEffect } from 'react';
 export const useScrollPosition = () => {
     const [scrollY, setScrollY] = useState(0);
     const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null);
-    const [prevScrollY, setPrevScrollY] = useState(0);
 
     useEffect(() => {
+        let ticking = false;
+        let lastScrollY = window.scrollY;
+
         const handleScroll = () => {
-            const currentScrollY = window.scrollY;
-            
-            // Determine scroll direction
-            if (currentScrollY > prevScrollY && currentScrollY > 100) {
-                setScrollDirection('down');
-            } else if (currentScrollY < prevScrollY) {
-                setScrollDirection('up');
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const currentScrollY = window.scrollY;
+                    
+                    // Simple direction detection
+                    if (currentScrollY > lastScrollY) {
+                        setScrollDirection('down');
+                    } else if (currentScrollY < lastScrollY) {
+                        setScrollDirection('up');
+                    }
+                    
+                    setScrollY(currentScrollY);
+                    lastScrollY = currentScrollY;
+                    ticking = false;
+                });
+                ticking = true;
             }
-            
-            setScrollY(currentScrollY);
-            setPrevScrollY(currentScrollY);
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
@@ -25,7 +33,7 @@ export const useScrollPosition = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [prevScrollY]);
+    }, []);
 
     return { scrollY, scrollDirection };
 };

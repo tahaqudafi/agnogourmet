@@ -2,17 +2,25 @@ import { useScrollPosition } from "@/hooks/useScrollPosition";
 import { cn } from "@/lib/utils";
 import agnoLogo from "@/assets/Agno_Logo_2.png";
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 export const Navbar = () => {
   const { scrollY } = useScrollPosition();
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
+  // Check if we're on the homepage
+  const isHomepage = location.pathname === '/';
+  
   // Assuming hero section is roughly viewport height (100vh)
   // We'll make the navbar opaque after scrolling past 80% of viewport height
   const heroHeight = typeof window !== 'undefined' ? window.innerHeight * 0.8 : 800;
   const isScrolledPastHero = scrollY > heroHeight;
+  
+  // Navbar should be opaque on all pages except homepage (unless scrolled past hero)
+  const shouldBeOpaque = !isHomepage || isScrolledPastHero || isMobileMenuOpen;
 
   // More stable visibility logic
   useEffect(() => {
@@ -43,8 +51,8 @@ export const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out",
-        isScrolledPastHero || isMobileMenuOpen
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out",
+        shouldBeOpaque
           ? "bg-[#22372b] backdrop-blur-md shadow-sm"
           : "bg-transparent",
         !isVisible
@@ -60,13 +68,13 @@ export const Navbar = () => {
         {/* Mobile Layout - Logo centered */}
         <div className="flex md:hidden items-center justify-center w-full relative">
           {/* AGNO Logo - Centered on mobile */}
-          <div className="flex items-center">
+          <Link to="/" className="flex items-center">
             <img
               src={agnoLogo}
               alt="AGNO"
               className="h-12 w-auto transition-opacity duration-300"
             />
-          </div>
+          </Link>
 
           {/* Mobile menu button - Positioned absolutely to the right */}
           <button
@@ -96,28 +104,28 @@ export const Navbar = () => {
         {/* Desktop Layout - Original layout */}
         <div className="hidden md:flex items-center justify-between w-full">
           {/* AGNO Logo */}
-          <div className="flex items-center ml-8">
+          <Link to="/" className="flex items-center ml-8">
             <img
               src={agnoLogo}
               alt="AGNO"
               className="h-12 w-auto transition-opacity duration-300"
             />
-          </div>
+          </Link>
 
           {/* Navigation links */}
           <div className="flex items-center space-x-8">
-            <a
-              href="#home"
+            <Link
+              to="/"
               className="text-white transition-colors duration-300 hover:opacity-80"
             >
               Home
-            </a>
-            <a
-              href="#products"
+            </Link>
+            <Link
+              to="/products"
               className="text-white transition-colors duration-300 hover:opacity-80"
             >
               Products
-            </a>
+            </Link>
             <a
               href="#about"
               className="text-white transition-colors duration-300 hover:opacity-80"
@@ -144,27 +152,46 @@ export const Navbar = () => {
         >
           <div className="px-6 pt-4 pb-8 space-y-2">
             {[
-              { href: "#home", label: "Home" },
-              { href: "#products", label: "Products" },
-              { href: "#about", label: "About" },
-              { href: "#contact", label: "Contact" }
+              { href: "/", label: "Home", isLink: true },
+              { href: "/products", label: "Products", isLink: true },
+              { href: "#about", label: "About", isLink: false },
+              { href: "#contact", label: "Contact", isLink: false }
             ].map((item, index) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={cn(
-                  "block text-white transition-all duration-300 hover:opacity-80 hover:translate-x-2 py-3 px-2 rounded-lg hover:bg-white/10",
-                  isMobileMenuOpen
-                    ? "transform translate-y-0 opacity-100"
-                    : "transform -translate-y-4 opacity-0"
-                )}
-                style={{
-                  transitionDelay: isMobileMenuOpen ? `${index * 100}ms` : '0ms'
-                }}
-              >
-                {item.label}
-              </a>
+              item.isLink ? (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={cn(
+                    "block text-white transition-all duration-300 hover:opacity-80 hover:translate-x-2 py-3 px-2 rounded-lg hover:bg-white/10",
+                    isMobileMenuOpen
+                      ? "transform translate-y-0 opacity-100"
+                      : "transform -translate-y-4 opacity-0"
+                  )}
+                  style={{
+                    transitionDelay: isMobileMenuOpen ? `${index * 100}ms` : '0ms'
+                  }}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={cn(
+                    "block text-white transition-all duration-300 hover:opacity-80 hover:translate-x-2 py-3 px-2 rounded-lg hover:bg-white/10",
+                    isMobileMenuOpen
+                      ? "transform translate-y-0 opacity-100"
+                      : "transform -translate-y-4 opacity-0"
+                  )}
+                  style={{
+                    transitionDelay: isMobileMenuOpen ? `${index * 100}ms` : '0ms'
+                  }}
+                >
+                  {item.label}
+                </a>
+              )
             ))}
           </div>
         </div>

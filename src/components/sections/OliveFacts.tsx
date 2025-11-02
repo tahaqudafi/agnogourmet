@@ -3,8 +3,13 @@ import factsBackground from "@/assets/facts-background.jpg";
 import agnobottel from "@/assets/agnobottel.png";
 import olivebasket from "@/assets/olivebasket.png";
 import lab from "@/assets/lab.png";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export const OliveFacts = () => {
+  const factsRef = useRef(null);
+  const isInView = useInView(factsRef, { once: true, margin: "-100px" });
+
   return (
     <section
       id="about"
@@ -18,10 +23,16 @@ export const OliveFacts = () => {
       <div className="absolute inset-0 bg-background/60 backdrop-blur-sm" />
 
       <div className="relative max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold mb-4" style={{ color: '#22372b' }}>
+        <div ref={factsRef} className="text-center mb-16">
+          <motion.h2
+            className="font-serif text-4xl md:text-5xl font-bold mb-4"
+            style={{ color: '#22372b' }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             How We Guarantee Real,<br />High-Quality Olive Oil
-          </h2>
+          </motion.h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">

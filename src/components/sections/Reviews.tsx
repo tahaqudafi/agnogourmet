@@ -19,7 +19,7 @@ const reviews: Review[] = [
     content: "Super fast delivery, exceptional taste and great polyphenol content - and all at a decent price in a stylish bottle. Could not want more!",
     author: "Marius K.",
     location: "DE",
-    date: "5 May 2024",
+    date: "5 May 2025",
     rating: 5
   },
   {
@@ -28,7 +28,7 @@ const reviews: Review[] = [
     content: "We used the olive oil for a health and longevity convention, and it is by far the best olive oil I have ever used or tasted. It's the perfect product for health and longevity enthusiasts. We genuinely couldn't find any competing products or brands that balance health benefits, transparency, affordability...",
     author: "Arne D.",
     location: "DE",
-    date: "11 Nov 2024",
+    date: "1 Nov 2025",
     rating: 5
   },
   {

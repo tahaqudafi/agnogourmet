@@ -5,6 +5,7 @@ import { OliveFacts } from "@/components/sections/OliveFacts";
 import { FAQ } from "@/components/sections/FAQ";
 import { NewsletterFooter } from "@/components/sections/NewsletterFooter";
 import { Navbar } from "@/components/navigation/Navbar";
+import { ProductsShippingMarquee } from "@/components/sections/ProductsShippingMarquee";
 import { PageTransition } from "@/components/PageTransition";
 
 const Index = () => {
@@ -18,6 +19,7 @@ const Index = () => {
           <Reviews />
           <OliveFacts />
           <FAQ />
+          <ProductsShippingMarquee />
           <NewsletterFooter />
         </div>
       </div>

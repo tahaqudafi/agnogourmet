@@ -6,6 +6,7 @@ import { PageTransition } from "@/components/PageTransition";
 import { StaggerContainer, StaggerItem } from "@/components/StaggerContainer";
 import { motion, useInView } from "framer-motion";
 import { NewsletterFooter } from "@/components/sections/NewsletterFooter";
+import { ProductsShippingMarquee } from "@/components/sections/ProductsShippingMarquee";
 import pomoImage from "@/assets/pomo.jpeg";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -344,6 +345,9 @@ const Products = () => {
                         </motion.div>
                     </div>
                 </section>
+
+                {/* Shipping Marquee */}
+                <ProductsShippingMarquee />
 
                 <NewsletterFooter />
 

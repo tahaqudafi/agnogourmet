@@ -7,16 +7,24 @@ import { StaggerContainer, StaggerItem } from "@/components/StaggerContainer";
 import { motion, useInView } from "framer-motion";
 import { NewsletterFooter } from "@/components/sections/NewsletterFooter";
 import pomoImage from "@/assets/pomo.jpeg";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const Products = () => {
     const [selectedCategory, setSelectedCategory] = useState<string>('all');
+    const [currentSlide, setCurrentSlide] = useState(0);
     const heroRef = useRef(null);
+    const carouselRef = useRef<HTMLDivElement>(null);
     const isInView = useInView(heroRef, { once: true, margin: "-100px" });
 
     // Scroll to top when component mounts
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    // Reset carousel when category changes
+    useEffect(() => {
+        setCurrentSlide(0);
+    }, [selectedCategory]);
 
     const categories = [
         { id: 'all', label: 'All Products' },
@@ -28,6 +36,18 @@ const Products = () => {
     const filteredProducts = selectedCategory === 'all'
         ? products
         : products.filter(product => product.category === selectedCategory);
+
+    const nextSlide = () => {
+        setCurrentSlide((prev) => (prev + 1) % filteredProducts.length);
+    };
+
+    const prevSlide = () => {
+        setCurrentSlide((prev) => (prev - 1 + filteredProducts.length) % filteredProducts.length);
+    };
+
+    const goToSlide = (index: number) => {
+        setCurrentSlide(index);
+    };
 
     return (
         <PageTransition>
@@ -82,8 +102,8 @@ const Products = () => {
                     </div>
                 </section>
 
-                {/* Products Grid */}
-                <section className="pb-24 px-4 md:px-8 lg:px-16">
+                {/* Products Grid - Desktop */}
+                <section className="pb-24 px-4 md:px-8 lg:px-16 hidden md:block">
                     <div className="max-w-6xl mx-auto">
                         <StaggerContainer className="flex flex-wrap justify-center gap-6 lg:gap-8" delay={0.3}>
                             {filteredProducts.map((product) => (
@@ -99,6 +119,83 @@ const Products = () => {
                         </StaggerContainer>
 
                         {filteredProducts.length === 0 && (
+                            <div className="text-center py-16">
+                                <p className="text-xl" style={{ color: '#22372b' }}>
+                                    No products found in this category.
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                </section>
+
+                {/* Products Carousel - Mobile */}
+                <section className="pb-24 px-4 md:hidden">
+                    <div className="max-w-sm mx-auto">
+                        {filteredProducts.length > 0 ? (
+                            <div className="relative">
+                                {/* Carousel Container */}
+                                <div
+                                    ref={carouselRef}
+                                    className="overflow-hidden rounded-2xl"
+                                >
+                                    <motion.div
+                                        className="flex"
+                                        animate={{ x: -currentSlide * 100 + "%" }}
+                                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                    >
+                                        {filteredProducts.map((product) => (
+                                            <div key={product.id} className="w-full flex-shrink-0 px-2">
+                                                <ProductCard
+                                                    image={product.image}
+                                                    name={product.name}
+                                                    description={product.description}
+                                                    volume={product.volume}
+                                                />
+                                            </div>
+                                        ))}
+                                    </motion.div>
+                                </div>
+
+                                {/* Navigation Buttons */}
+                                {filteredProducts.length > 1 && (
+                                    <>
+                                        <button
+                                            onClick={prevSlide}
+                                            className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-lg border border-white/30 transition-all duration-300 hover:bg-white/90"
+                                            style={{ color: '#22372b' }}
+                                        >
+                                            <ChevronLeft className="w-5 h-5" />
+                                        </button>
+                                        <button
+                                            onClick={nextSlide}
+                                            className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-lg border border-white/30 transition-all duration-300 hover:bg-white/90"
+                                            style={{ color: '#22372b' }}
+                                        >
+                                            <ChevronRight className="w-5 h-5" />
+                                        </button>
+                                    </>
+                                )}
+
+                                {/* Dots Indicator */}
+                                {filteredProducts.length > 1 && (
+                                    <div className="flex justify-center mt-6 gap-2">
+                                        {filteredProducts.map((_, index) => (
+                                            <button
+                                                key={index}
+                                                onClick={() => goToSlide(index)}
+                                                className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide
+                                                        ? 'w-6'
+                                                        : 'hover:opacity-80'
+                                                    }`}
+                                                style={{
+                                                    backgroundColor: index === currentSlide ? '#22372b' : '#22372b40'
+                                                }}
+                                            />
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
                             <div className="text-center py-16">
                                 <p className="text-xl" style={{ color: '#22372b' }}>
                                     No products found in this category.

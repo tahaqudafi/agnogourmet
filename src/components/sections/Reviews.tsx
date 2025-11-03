@@ -181,7 +181,7 @@ export const Reviews = () => {
       <div className="relative overflow-hidden w-full group">
         <div
           className="flex animate-marquee group-hover:animate-marquee-paused"
-          style={{ 
+          style={{
             width: `${reviews.length * 344 * 2}px`,
             willChange: 'transform'
           }}
@@ -197,7 +197,7 @@ export const Reviews = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes marquee {
           0% {
             transform: translateX(0);

@@ -15,7 +15,7 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 
 export const NewsletterFooter = () => {
   return (
-    <footer id="contact" className="pt-8 pb-0 px-4 md:px-8 lg:px-16" style={{ backgroundColor: '#22372b' }}>
+    <footer id="contact" className="pt-8 pb-2 px-4 md:px-8 lg:px-16" style={{ backgroundColor: '#22372b' }}>
       <div className="max-w-4xl mx-auto">
         {/* Newsletter */}
         <div className="text-center mb-8">

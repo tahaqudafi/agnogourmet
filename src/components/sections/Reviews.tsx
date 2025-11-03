@@ -33,56 +33,56 @@ const reviews: Review[] = [
   },
   {
     id: 3,
-    title: "Authentic Greek flavor",
-    content: "The honey is absolutely divine! You can taste the Mediterranean sunshine in every spoonful. The quality is exceptional and the packaging is beautiful.",
-    author: "Sofia M.",
-    location: "GR",
-    date: "28 Oct 2024",
+    title: "Third time",
+    content: "Bought it the 3rd time. Always delicious.",
+    author: "Derya Özlü",
+    location: "DE",
+    date: "20 Sep 2025",
     rating: 5
   },
   {
     id: 4,
-    title: "Outstanding quality spices",
-    content: "The oregano and herbs are so fresh and aromatic. They've completely transformed my cooking. The difference in quality compared to supermarket brands is remarkable.",
-    author: "James L.",
-    location: "UK",
-    date: "15 Oct 2024",
+    title: "Köstlich",
+    content: "Sehr leckeres, mildes Olivenöl. Schmeckt in Salaten oder pur zum Brot.",
+    author: "Miriam Peters",
+    location: "DE",
+    date: "27 Jul 2025",
     rating: 5
   },
   {
     id: 5,
-    title: "Family tradition in every bottle",
-    content: "You can really taste the care and tradition that goes into these products. The olive oil reminds me of my grandmother's cooking in Crete. Absolutely wonderful!",
-    author: "Maria P.",
-    location: "US",
-    date: "3 Oct 2024",
+    title: "Ich liebe alle Produkte ❤️",
+    content: "Diesmal habe ich das Olivenöl als Geschenk für meine Cousine gekauft und sie liebt es! Der Inhalt ist top, aber die Flaschen sind einfach wunderschön und nicht mehr wegzudenken von meiner Küche 🤩",
+    author: "Ayşegül Özkan",
+    location: "DE",
+    date: "18 Jul 2025",
     rating: 5
   },
   {
     id: 6,
-    title: "Excellent customer service",
-    content: "Not only are the products amazing, but the customer service is top-notch. They answered all my questions about the harvesting process and shipping was incredibly fast.",
-    author: "Thomas R.",
-    location: "FR",
-    date: "22 Sep 2024",
+    title: "Perfekt 👌",
+    content: "Die Flasche kam gut verpackt an und ist auf jeden Fall ein Hingucker mit den schönen sichtbaren Gewürzen drin 🤩 Der Geschmack ist sehr gut- nicht zu viele und nicht zu wenige Kräuter! Einfach perfekt, auch unsere kleinen Gourmets sind begeistert...",
+    author: "RD",
+    location: "DE",
+    date: "3 Apr 2025",
     rating: 5
   },
   {
     id: 7,
-    title: "Premium quality honey",
-    content: "The thyme honey is absolutely incredible. Rich, complex flavor that you simply can't find in regular stores. Worth every penny for this level of quality.",
-    author: "Elena V.",
-    location: "IT",
-    date: "18 Sep 2024",
+    title: "10/10 Olive oil",
+    content: "The olive oil is of very high quality. It tastes unbelievably delicious, and the seasoning is perfectly balanced. You can never get enough of it. Visually, the bottle is a real eye-catcher.",
+    author: "Leyla Yalcin",
+    location: "DE",
+    date: "1 Apr 2025",
     rating: 5
   },
   {
     id: 8,
-    title: "Sustainable and delicious",
-    content: "Love that these products are sustainably sourced and support local Greek farmers. The taste is unmatched and I feel good about my purchase.",
-    author: "David C.",
-    location: "CA",
-    date: "10 Sep 2024",
+    title: "Intensiver Geschmack mit würziger Note",
+    content: "Das Olivenöl kam gestern an und was soll ich sagen, ich liebe es! Es ist fein gewürzt, was aber den intensiven Olivenölgeschmack nicht übertönt. Was mich zusätzlich überzeugt hat, ist, dass es kein bisschen bitter ist! Selbst meine Kinder haben nicht...",
+    author: "Nilüfer Yilmaz",
+    location: "DE",
+    date: "29 Mar 2025",
     rating: 5
   },
   {
@@ -90,17 +90,17 @@ const reviews: Review[] = [
     title: "Gift that impressed everyone",
     content: "Bought a selection as gifts for my foodie friends and they were all blown away by the quality. The presentation is beautiful and the taste is exceptional.",
     author: "Anna K.",
-    location: "AU",
-    date: "5 Sep 2024",
+    location: "DE",
+    date: "5 Sep 2025",
     rating: 5
   },
   {
     id: 10,
-    title: "Healthy and delicious",
-    content: "As someone who follows a Mediterranean diet, these products are perfect. High quality, authentic flavors, and you can really taste the difference in freshness.",
-    author: "Michael B.",
-    location: "NL",
-    date: "1 Sep 2024",
+    title: "Delicious!",
+    content: "Best honey.",
+    author: "Derya Özlü",
+    location: "DE",
+    date: "1 Sep 2025",
     rating: 5
   }
 ];
@@ -120,23 +120,28 @@ const StarRating = ({ rating }: { rating: number }) => {
 
 const ReviewCard = ({ review }: { review: Review }) => {
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 flex-shrink-0 w-80 mx-3">
+    <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 flex-shrink-0 w-80 mx-3 h-64 flex flex-col">
+      {/* Header section - always at top */}
       <div className="flex items-start justify-between mb-4">
         <h3 className="font-semibold text-lg leading-tight" style={{ color: '#22372b' }}>
           {review.title}
         </h3>
         <StarRating rating={review.rating} />
       </div>
-      
-      <p className="text-gray-700 mb-6 leading-relaxed line-clamp-4">
-        {review.content}
-      </p>
-      
-      <div className="flex items-center justify-between text-sm text-gray-500">
-        <span className="font-medium">
-          {review.author} ({review.location})
-        </span>
-        <span>{review.date}</span>
+
+      {/* Content section - takes up available space */}
+      <div className="flex-grow flex flex-col justify-between">
+        <p className="text-gray-700 leading-relaxed line-clamp-4">
+          {review.content}
+        </p>
+
+        {/* Author and date - always at bottom */}
+        <div className="flex items-center justify-between text-sm text-gray-500 mt-4">
+          <span className="font-medium">
+            {review.author} ({review.location})
+          </span>
+          <span>{review.date}</span>
+        </div>
       </div>
     </div>
   );
@@ -151,8 +156,8 @@ export const Reviews = () => {
       {/* Header with constrained width */}
       <div className="px-4 md:px-8 lg:px-16 mb-16">
         <div className="max-w-6xl mx-auto text-center">
-          <motion.h2 
-            className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6" 
+          <motion.h2
+            className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
             style={{ color: '#22372b' }}
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -160,8 +165,8 @@ export const Reviews = () => {
           >
             Customer Reviews
           </motion.h2>
-          <motion.p 
-            className="text-lg md:text-xl max-w-3xl mx-auto" 
+          <motion.p
+            className="text-lg md:text-xl max-w-3xl mx-auto"
             style={{ color: '#22372b' }}
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -171,23 +176,15 @@ export const Reviews = () => {
           </motion.p>
         </div>
       </div>
-      
+
       {/* Full-width marquee */}
-      <div className="relative overflow-hidden w-full">
-        <motion.div
-          className="flex"
-          animate={{
-            x: [0, -100 * reviews.length * 0.8]
+      <div className="relative overflow-hidden w-full group">
+        <div
+          className="flex animate-marquee group-hover:animate-marquee-paused"
+          style={{ 
+            width: `${reviews.length * 344 * 2}px`,
+            willChange: 'transform'
           }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 60,
-              ease: "linear",
-            },
-          }}
-          style={{ width: `${reviews.length * 320 * 2}px` }}
         >
           {/* First set of reviews */}
           {reviews.map((review) => (
@@ -197,8 +194,34 @@ export const Reviews = () => {
           {reviews.map((review) => (
             <ReviewCard key={`second-${review.id}`} review={review} />
           ))}
-        </motion.div>
+        </div>
       </div>
+
+      <style jsx>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-${reviews.length * 344}px);
+          }
+        }
+        
+        .animate-marquee {
+          animation: marquee 50s linear infinite;
+          transform: translateZ(0);
+          backface-visibility: hidden;
+          perspective: 1000px;
+        }
+        
+        .animate-marquee-paused {
+          animation: marquee 50s linear infinite;
+          animation-play-state: paused;
+          transform: translateZ(0);
+          backface-visibility: hidden;
+          perspective: 1000px;
+        }
+      `}</style>
     </section>
   );
 };

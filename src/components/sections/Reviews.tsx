@@ -178,9 +178,9 @@ export const Reviews = () => {
       </div>
 
       {/* Full-width marquee */}
-      <div className="relative overflow-hidden w-full group">
+      <div className="relative overflow-hidden w-full">
         <div
-          className="flex animate-marquee group-hover:animate-marquee-paused"
+          className="flex animate-marquee"
           style={{
             width: `${reviews.length * 344 * 2}px`,
             willChange: 'transform'
@@ -209,14 +209,6 @@ export const Reviews = () => {
         
         .animate-marquee {
           animation: marquee 50s linear infinite;
-          transform: translateZ(0);
-          backface-visibility: hidden;
-          perspective: 1000px;
-        }
-        
-        .animate-marquee-paused {
-          animation: marquee 50s linear infinite;
-          animation-play-state: paused;
           transform: translateZ(0);
           backface-visibility: hidden;
           perspective: 1000px;

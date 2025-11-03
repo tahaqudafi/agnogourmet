@@ -35,7 +35,8 @@ const Products = () => {
         { id: 'all', label: 'All Products' },
         { id: 'olive-oil', label: 'Olive Oil' },
         { id: 'honey', label: 'Honey' },
-        { id: 'spices', label: 'Spices' }
+        { id: 'spices', label: 'Spices' },
+        { id: 'gifts', label: 'Gifts & more' }
     ];
 
     const filteredProducts = selectedCategory === 'all'

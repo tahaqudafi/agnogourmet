@@ -42,21 +42,27 @@ export const NewsletterFooter = () => {
         {/* Social Links */}
         <div className="flex justify-center items-center gap-8 mb-6">
           <a
-            href="#"
+            href="https://www.facebook.com/profile.php?id=61569771574754"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-white hover:text-white/80 transition-colors duration-300 hover:scale-110 transform"
             aria-label="Facebook"
           >
             <Facebook className="w-7 h-7" />
           </a>
           <a
-            href="#"
+            href="https://www.instagram.com/agnogourmet"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-white hover:text-white/80 transition-colors duration-300 hover:scale-110 transform"
             aria-label="Instagram"
           >
             <Instagram className="w-7 h-7" />
           </a>
           <a
-            href="#"
+            href="https://www.tiktok.com/@agnogourmet"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-white hover:text-white/80 transition-colors duration-300 hover:scale-110 transform"
             aria-label="TikTok"
           >

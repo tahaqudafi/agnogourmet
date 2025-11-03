@@ -135,7 +135,9 @@ export const Navbar = () => {
               Blog
             </a>
             <a
-              href="#contact"
+              href="https://www.agnogourmet.com/pages/contact"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-white transition-colors duration-300 hover:opacity-80"
             >
               Contact
@@ -157,7 +159,7 @@ export const Navbar = () => {
               { href: "/products", label: "Shop", isLink: true },
               { href: "#about", label: "About", isLink: false },
               { href: "https://www.agnogourmet.com/blogs/news", label: "Blog", isLink: false },
-              { href: "#contact", label: "Contact", isLink: false }
+              { href: "https://www.agnogourmet.com/pages/contact", label: "Contact", isLink: false }
             ].map((item, index) => (
               item.isLink ? (
                 <Link
@@ -181,6 +183,8 @@ export const Navbar = () => {
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
+                  target={item.href.startsWith('http') ? "_blank" : undefined}
+                  rel={item.href.startsWith('http') ? "noopener noreferrer" : undefined}
                   className={cn(
                     "block text-white transition-all duration-300 hover:opacity-80 hover:translate-x-2 py-3 px-2 rounded-lg hover:bg-white/10",
                     isMobileMenuOpen

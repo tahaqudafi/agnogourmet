@@ -12,6 +12,10 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const Products = () => {
     const [selectedCategory, setSelectedCategory] = useState<string>('all');
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [touchStart, setTouchStart] = useState<number | null>(null);
+    const [touchEnd, setTouchEnd] = useState<number | null>(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const [dragOffset, setDragOffset] = useState(0);
     const heroRef = useRef(null);
     const carouselRef = useRef<HTMLDivElement>(null);
     const isInView = useInView(heroRef, { once: true, margin: "-100px" });
@@ -47,6 +51,57 @@ const Products = () => {
 
     const goToSlide = (index: number) => {
         setCurrentSlide(index);
+    };
+
+    // Touch handlers
+    const handleTouchStart = (e: React.TouchEvent) => {
+        setTouchEnd(null);
+        setTouchStart(e.targetTouches[0].clientX);
+        setIsDragging(true);
+        setDragOffset(0);
+    };
+
+    const handleTouchMove = (e: React.TouchEvent) => {
+        if (!touchStart) return;
+
+        const currentTouch = e.targetTouches[0].clientX;
+        const diff = currentTouch - touchStart;
+
+        // Limit drag distance to prevent over-dragging
+        const maxDrag = 100;
+        const limitedDiff = Math.max(-maxDrag, Math.min(maxDrag, diff));
+
+        setTouchEnd(currentTouch);
+        setDragOffset(limitedDiff);
+    };
+
+    const handleTouchEnd = () => {
+        setIsDragging(false);
+        setDragOffset(0);
+
+        if (!touchStart || !touchEnd) return;
+
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > 50;
+        const isRightSwipe = distance < -50;
+
+        if (isLeftSwipe && filteredProducts.length > 1) {
+            nextSlide();
+        }
+        if (isRightSwipe && filteredProducts.length > 1) {
+            prevSlide();
+        }
+    };
+
+    // Calculate the current transform value
+    const getTransformValue = () => {
+        const baseTransform = -currentSlide * 100;
+        if (isDragging && carouselRef.current) {
+            const containerWidth = carouselRef.current.offsetWidth;
+            const dragPercentage = (dragOffset / containerWidth) * 100;
+            return baseTransform + dragPercentage;
+        }
+        return baseTransform;
     };
 
     return (
@@ -137,11 +192,21 @@ const Products = () => {
                                 <div
                                     ref={carouselRef}
                                     className="overflow-hidden rounded-2xl"
+                                    onTouchStart={handleTouchStart}
+                                    onTouchMove={handleTouchMove}
+                                    onTouchEnd={handleTouchEnd}
                                 >
                                     <motion.div
-                                        className="flex"
-                                        animate={{ x: -currentSlide * 100 + "%" }}
-                                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                        className="flex touch-pan-y"
+                                        animate={{
+                                            x: getTransformValue() + "%"
+                                        }}
+                                        transition={{
+                                            type: isDragging ? "tween" : "spring",
+                                            stiffness: 300,
+                                            damping: 30,
+                                            duration: isDragging ? 0 : undefined
+                                        }}
                                     >
                                         {filteredProducts.map((product) => (
                                             <div key={product.id} className="w-full flex-shrink-0 px-2">
@@ -161,17 +226,17 @@ const Products = () => {
                                     <>
                                         <button
                                             onClick={prevSlide}
-                                            className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-lg border border-white/30 transition-all duration-300 hover:bg-white/90"
+                                            className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 shadow-lg border border-white/30 transition-all duration-300 hover:bg-white/90"
                                             style={{ color: '#22372b' }}
                                         >
-                                            <ChevronLeft className="w-5 h-5" />
+                                            <ChevronLeft className="w-4 h-4" />
                                         </button>
                                         <button
                                             onClick={nextSlide}
-                                            className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-lg border border-white/30 transition-all duration-300 hover:bg-white/90"
+                                            className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 shadow-lg border border-white/30 transition-all duration-300 hover:bg-white/90"
                                             style={{ color: '#22372b' }}
                                         >
-                                            <ChevronRight className="w-5 h-5" />
+                                            <ChevronRight className="w-4 h-4" />
                                         </button>
                                     </>
                                 )}

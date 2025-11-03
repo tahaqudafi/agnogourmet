@@ -49,15 +49,6 @@ const Products = () => {
         setCurrentSlide(index);
     };
 
-    const handleDragEnd = (event: any, info: any) => {
-        const threshold = 50;
-        if (info.offset.x > threshold) {
-            prevSlide();
-        } else if (info.offset.x < -threshold) {
-            nextSlide();
-        }
-    };
-
     return (
         <PageTransition>
             <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
@@ -148,25 +139,18 @@ const Products = () => {
                                     className="overflow-hidden rounded-2xl"
                                 >
                                     <motion.div
-                                        className="flex cursor-grab active:cursor-grabbing"
+                                        className="flex"
                                         animate={{ x: -currentSlide * 100 + "%" }}
                                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                                        drag="x"
-                                        dragConstraints={{ left: 0, right: 0 }}
-                                        dragElastic={0.2}
-                                        onDragEnd={handleDragEnd}
-                                        whileDrag={{ cursor: "grabbing" }}
                                     >
                                         {filteredProducts.map((product) => (
-                                            <div key={product.id} className="w-full flex-shrink-0 px-2 pointer-events-none">
-                                                <div className="pointer-events-auto">
-                                                    <ProductCard
-                                                        image={product.image}
-                                                        name={product.name}
-                                                        description={product.description}
-                                                        volume={product.volume}
-                                                    />
-                                                </div>
+                                            <div key={product.id} className="w-full flex-shrink-0 px-2">
+                                                <ProductCard
+                                                    image={product.image}
+                                                    name={product.name}
+                                                    description={product.description}
+                                                    volume={product.volume}
+                                                />
                                             </div>
                                         ))}
                                     </motion.div>

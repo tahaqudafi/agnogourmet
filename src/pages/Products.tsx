@@ -49,6 +49,15 @@ const Products = () => {
         setCurrentSlide(index);
     };
 
+    const handleDragEnd = (event: any, info: any) => {
+        const threshold = 50;
+        if (info.offset.x > threshold) {
+            prevSlide();
+        } else if (info.offset.x < -threshold) {
+            nextSlide();
+        }
+    };
+
     return (
         <PageTransition>
             <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
@@ -139,18 +148,25 @@ const Products = () => {
                                     className="overflow-hidden rounded-2xl"
                                 >
                                     <motion.div
-                                        className="flex"
+                                        className="flex cursor-grab active:cursor-grabbing"
                                         animate={{ x: -currentSlide * 100 + "%" }}
                                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                        drag="x"
+                                        dragConstraints={{ left: 0, right: 0 }}
+                                        dragElastic={0.2}
+                                        onDragEnd={handleDragEnd}
+                                        whileDrag={{ cursor: "grabbing" }}
                                     >
                                         {filteredProducts.map((product) => (
-                                            <div key={product.id} className="w-full flex-shrink-0 px-2">
-                                                <ProductCard
-                                                    image={product.image}
-                                                    name={product.name}
-                                                    description={product.description}
-                                                    volume={product.volume}
-                                                />
+                                            <div key={product.id} className="w-full flex-shrink-0 px-2 pointer-events-none">
+                                                <div className="pointer-events-auto">
+                                                    <ProductCard
+                                                        image={product.image}
+                                                        name={product.name}
+                                                        description={product.description}
+                                                        volume={product.volume}
+                                                    />
+                                                </div>
                                             </div>
                                         ))}
                                     </motion.div>
@@ -184,8 +200,8 @@ const Products = () => {
                                                 key={index}
                                                 onClick={() => goToSlide(index)}
                                                 className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide
-                                                        ? 'w-6'
-                                                        : 'hover:opacity-80'
+                                                    ? 'w-6'
+                                                    : 'hover:opacity-80'
                                                     }`}
                                                 style={{
                                                     backgroundColor: index === currentSlide ? '#22372b' : '#22372b40'

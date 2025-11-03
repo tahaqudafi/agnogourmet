@@ -9,7 +9,7 @@ const TikTokIcon = ({ className }: { className?: string }) => (
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
   </svg>
 );
 
@@ -21,7 +21,7 @@ export const NewsletterFooter = () => {
         <div className="text-center mb-8">
 
           <p className="mb-8 text-lg text-white/80">
-            Join the exclusive Agnó newsletter and secure a 10% discount.
+            Join the club and enjoy the <strong>exclusive benefits of Agnó!</strong>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <Input
@@ -61,6 +61,63 @@ export const NewsletterFooter = () => {
             aria-label="TikTok"
           >
             <TikTokIcon className="w-7 h-7" />
+          </a>
+        </div>
+
+        {/* Footer Links */}
+        <div className="flex flex-wrap justify-center items-center gap-4 mb-6 text-sm">
+          <a
+            href="https://www.agnogourmet.com/policies/privacy-policy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/70 hover:text-white transition-colors duration-300"
+          >
+            Privacy Policy
+          </a>
+          <span className="text-white/30">•</span>
+          <a
+            href="https://www.agnogourmet.com/policies/terms-of-service"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/70 hover:text-white transition-colors duration-300"
+          >
+            Terms of Service
+          </a>
+          <span className="text-white/30">•</span>
+          <a
+            href="https://www.agnogourmet.com/policies/legal-notice"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/70 hover:text-white transition-colors duration-300"
+          >
+            Legal Notice
+          </a>
+          <span className="text-white/30">•</span>
+          <a
+            href="https://www.agnogourmet.com/policies/contact-information"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/70 hover:text-white transition-colors duration-300"
+          >
+            Contact Information
+          </a>
+          <span className="text-white/30">•</span>
+          <a
+            href="https://www.agnogourmet.com/policies/shipping-policy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/70 hover:text-white transition-colors duration-300"
+          >
+            Shipping Policy
+          </a>
+          <span className="text-white/30">•</span>
+          <a
+            href="https://www.agnogourmet.com/policies/refund-policy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/70 hover:text-white transition-colors duration-300"
+          >
+            Refund Policy
           </a>
         </div>
 

@@ -115,22 +115,24 @@ export const Navbar = () => {
           {/* Navigation links */}
           <div className="flex items-center space-x-8">
             <Link
-              to="/"
-              className="text-white transition-colors duration-300 hover:opacity-80"
-            >
-              Home
-            </Link>
-            <Link
               to="/products"
               className="text-white transition-colors duration-300 hover:opacity-80"
             >
-              Products
+              Shop
             </Link>
             <a
               href="#about"
               className="text-white transition-colors duration-300 hover:opacity-80"
             >
               About
+            </a>
+            <a
+              href="https://www.agnogourmet.com/blogs/news"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white transition-colors duration-300 hover:opacity-80"
+            >
+              Blog
             </a>
             <a
               href="#contact"
@@ -152,9 +154,9 @@ export const Navbar = () => {
         >
           <div className="px-6 pt-4 pb-8 space-y-2">
             {[
-              { href: "/", label: "Home", isLink: true },
-              { href: "/products", label: "Products", isLink: true },
+              { href: "/products", label: "Shop", isLink: true },
               { href: "#about", label: "About", isLink: false },
+              { href: "https://www.agnogourmet.com/blogs/news", label: "Blog", isLink: false },
               { href: "#contact", label: "Contact", isLink: false }
             ].map((item, index) => (
               item.isLink ? (

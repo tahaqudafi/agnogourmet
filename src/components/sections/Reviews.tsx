@@ -79,7 +79,7 @@ const reviews: Review[] = [
   {
     id: 8,
     title: "Intensiver Geschmack mit würziger Note",
-    content: "Das Olivenöl kam gestern an und was soll ich sagen, ich liebe es! Es ist fein gewürzt, was aber den intensiven Olivenölgeschmack nicht übertönt. Was mich zusätzlich überzeugt hat, ist, dass es kein bisschen bitter ist! Selbst meine Kinder haben nicht...",
+    content: "Das Olivenöl kam gestern an und was soll ich sagen, ich liebe es! Es ist fein gewürzt, was aber den intensiven...",
     author: "Nilüfer Yilmaz",
     location: "DE",
     date: "29 Mar 2025",

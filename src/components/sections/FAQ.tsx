@@ -90,7 +90,8 @@ export const FAQ = () => {
                         asChild
                         variant="product"
                         size="lg"
-                        className="px-8 py-3"
+                        className="px-8 py-3 rounded-xl text-white hover:opacity-90 transition-opacity duration-300"
+                        style={{ backgroundColor: '#22372B' }}
                     >
                         <a
                             href="https://www.agnogourmet.com/pages/faq"

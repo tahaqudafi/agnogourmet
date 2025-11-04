@@ -120,12 +120,12 @@ export const Navbar = () => {
             >
               Shop
             </Link>
-            <a
-              href="#about"
+            <Link
+              to="/about"
               className="text-white transition-colors duration-300 hover:opacity-80"
             >
               About
-            </a>
+            </Link>
             <a
               href="https://www.agnogourmet.com/blogs/news"
               target="_blank"
@@ -157,7 +157,7 @@ export const Navbar = () => {
           <div className="px-6 pt-4 pb-8 space-y-2">
             {[
               { href: "/products", label: "Shop", isLink: true },
-              { href: "#about", label: "About", isLink: false },
+              { href: "/about", label: "About", isLink: true },
               { href: "https://www.agnogourmet.com/blogs/news", label: "Blog", isLink: false },
               { href: "https://www.agnogourmet.com/pages/contact", label: "Contact", isLink: false }
             ].map((item, index) => (

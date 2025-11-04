@@ -8,6 +8,11 @@ export const ProductShowcase = () => {
   const showcaseRef = useRef(null);
   const isInView = useInView(showcaseRef, { once: true, margin: "-100px" });
 
+  // Filter to show only the main 3 products on homepage
+  const mainProducts = products.filter(product => 
+    ['spiced-olive-oil-500ml', 'extra-virgin-olive-oil-500ml', 'pine-tree-honey-400g'].includes(product.id)
+  );
+
   return (
     <section id="products" className="py-24 px-4 md:px-8 lg:px-16">
       <div className="max-w-4xl mx-auto">
@@ -33,13 +38,14 @@ export const ProductShowcase = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {products.map((product) => (
+          {mainProducts.map((product) => (
             <ProductCard
               key={product.id}
               image={product.image}
               name={product.name}
               description={product.description}
               volume={product.volume}
+              purchaseLink={product.purchaseLink}
             />
           ))}
         </div>

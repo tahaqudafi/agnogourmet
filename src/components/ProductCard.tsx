@@ -6,9 +6,10 @@ interface ProductCardProps {
   name: string;
   description: string;
   volume: string;
+  purchaseLink?: string;
 }
 
-export const ProductCard = ({ image, name, description, volume }: ProductCardProps) => {
+export const ProductCard = ({ image, name, description, volume, purchaseLink }: ProductCardProps) => {
   return (
     <Card className="group bg-white border-0 shadow-sm hover:shadow-lg transition-all duration-300 rounded-2xl flex flex-col h-full w-full max-w-xs mx-auto overflow-hidden">
       <div className="aspect-[4/5] bg-gray-50 flex items-center justify-center rounded-t-2xl">
@@ -30,14 +31,27 @@ export const ProductCard = ({ image, name, description, volume }: ProductCardPro
           </div>
           <p className="text-sm font-medium" style={{ color: '#22372b' }}>{volume}</p>
         </div>
-        <Button 
-          variant="product" 
-          size="lg" 
-          className="w-full font-medium mt-6 rounded-xl text-white hover:opacity-90 transition-opacity duration-300"
-          style={{ backgroundColor: '#22372B' }}
-        >
-          Shop Now
-        </Button>
+        {purchaseLink ? (
+          <a href={purchaseLink} target="_blank" rel="noopener noreferrer" className="w-full">
+            <Button 
+              variant="product" 
+              size="lg" 
+              className="w-full font-medium mt-6 rounded-xl text-white hover:opacity-90 transition-opacity duration-300"
+              style={{ backgroundColor: '#22372B' }}
+            >
+              Shop Now
+            </Button>
+          </a>
+        ) : (
+          <Button 
+            variant="product" 
+            size="lg" 
+            className="w-full font-medium mt-6 rounded-xl text-white hover:opacity-90 transition-opacity duration-300"
+            style={{ backgroundColor: '#22372B' }}
+          >
+            Shop Now
+          </Button>
+        )}
       </div>
     </Card>
   );

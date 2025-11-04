@@ -170,6 +170,7 @@ const Products = () => {
                                         name={product.name}
                                         description={product.description}
                                         volume={product.volume}
+                                        purchaseLink={product.purchaseLink}
                                     />
                                 </StaggerItem>
                             ))}
@@ -217,6 +218,7 @@ const Products = () => {
                                                     name={product.name}
                                                     description={product.description}
                                                     volume={product.volume}
+                                                    purchaseLink={product.purchaseLink}
                                                 />
                                             </div>
                                         ))}

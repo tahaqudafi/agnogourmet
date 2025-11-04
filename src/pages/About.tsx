@@ -43,7 +43,7 @@ const About = () => {
     const oliveDropScale = useTransform(oliveDropScrollProgress, [0.0, 0.05, 0.55, 0.6], [0.5, 1, 1, 0.3]);
 
     // Bottle animation - simple scale up and back down when olive drop enters
-    const bottleScale = useTransform(oliveDropScrollProgress, [0.55, 0.575, 0.6], [2.25, 2.5, 2.25]);
+    const bottleScale = useTransform(oliveDropScrollProgress, [0.55, 0.575, 0.6], [2.25, 3, 2.8]);
 
     // Funnel shake animation - triggers right after olive animation ends
     const funnelShakeX = useTransform(scrollYProgress, [0.8, 0.82, 0.84, 0.86, 0.88], [0, -3, 3, -2, 0]);
@@ -189,7 +189,7 @@ const About = () => {
                             <motion.img
                                 src={funnelSvg}
                                 alt="Funnel"
-                                className="w-32 h-32 md:w-56 md:h-56 object-contain ml-4"
+                                className="w-40 h-40 md:w-56 md:h-56 object-contain ml-4"
                                 style={{
                                     marginLeft: 'calc(1rem - 10px)',
                                     x: funnelShakeX,

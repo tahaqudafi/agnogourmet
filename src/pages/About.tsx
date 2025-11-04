@@ -8,6 +8,13 @@ import oliveSvg from "@/assets/olive.svg";
 import funnelSvg from "@/assets/funnel.svg";
 import oliveDropSvg from "@/assets/olivedrop.svg";
 import agnoGreenSvg from "@/assets/agnogreen.svg";
+import thasosMapImage from "@/assets/thassosmap.png";
+import islandImage from "@/assets/islandimage.png";
+import image1 from "@/assets/1.png";
+import image2 from "@/assets/2.png";
+import image3 from "@/assets/3.png";
+import image4 from "@/assets/4.png";
+import image5 from "@/assets/5.png";
 
 const About = () => {
     const heroRef = useRef(null);
@@ -78,7 +85,7 @@ const About = () => {
                 <Navbar />
 
                 {/* Hero Section */}
-                <section ref={heroRef} className="pt-32 pb-16 px-4 md:px-8 lg:px-16">
+                <section ref={heroRef} className="pt-32 pb-8 px-4 md:px-8 lg:px-16">
                     <div className="max-w-6xl mx-auto text-center">
                         <motion.h1
                             className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
@@ -89,16 +96,52 @@ const About = () => {
                         >
                             About Us
                         </motion.h1>
-                        <motion.p
-                            className="text-lg md:text-xl max-w-3xl mx-auto mb-12"
-                            style={{ color: '#22372b' }}
+
+                    </div>
+                </section>
+
+                {/* Origin Section */}
+                <section className="py-8 px-4 md:px-8 lg:px-16">
+                    <div className="max-w-6xl mx-auto">
+                        <motion.div
+                            className="flex flex-col lg:flex-row gap-8 lg:gap-12"
                             initial={{ opacity: 0, y: 30 }}
-                            animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
                         >
-                            Welcome to Agnó, where tradition meets excellence in every bottle and jar.
-                            Discover our story, our passion, and our commitment to bringing you the finest Mediterranean treasures.
-                        </motion.p>
+                            {/* Text Content */}
+                            <div className="flex-1 space-y-6">
+                                <h2 className="font-serif text-3xl md:text-4xl font-bold text-center lg:text-left" style={{ color: '#22372b' }}>
+                                    Origin: Thassos, Greece
+                                </h2>
+                                <p className="text-base md:text-lg leading-relaxed text-center lg:text-left" style={{ color: '#22372b' }}>
+                                    Our olive oil is born on Thassos, Greece, where the Aegean sun hits just right, and olive trees have been part of life for centuries. Grown by local families and pressed all within a few km away, every bottle captures the island's sun, sea, and slow living, bottled.
+                                </p>
+
+                                {/* Island Image */}
+                                <div className="rounded-2xl h-64 overflow-hidden">
+                                    <img
+                                        src={islandImage}
+                                        alt="Thasos island view"
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Map Placeholder - Full height match */}
+                            <div className="flex-1 bg-[#22372b] rounded-2xl p-8 min-h-[500px] lg:min-h-full relative overflow-hidden flex items-end">
+
+
+                                {/* Thasos Map Image - Full coverage */}
+                                <img
+                                    src={thasosMapImage}
+                                    alt="Thasos, Greece location map"
+                                    className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+                                    style={{ objectPosition: 'center 40%' }}
+                                />
+                            </div>
+                        </motion.div>
                     </div>
                 </section>
 
@@ -236,8 +279,8 @@ const About = () => {
                     </div>
                 </section>
 
-                {/* Groove to Bottle Section */}
-                <section className="pt-32 pb-16 px-4 md:px-8 lg:px-16">
+                {/* See more of us here Section */}
+                <section className="pb-16 px-4 md:px-8 lg:px-16" style={{ paddingTop: '15rem' }}>
                     <div className="max-w-6xl mx-auto text-center">
                         <motion.h2
                             className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-12"
@@ -247,21 +290,31 @@ const About = () => {
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
                         >
-                            Groove to Bottle
+                            See more of us here
                         </motion.h2>
-                        <motion.p
-                            className="text-lg md:text-xl max-w-4xl mx-auto"
-                            style={{ color: '#22372b' }}
+                        <motion.div
+                            className="flex justify-center gap-4"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                         >
-                            From the ancient groves of the Mediterranean to your table, every bottle of Agnó carries centuries of tradition.
-                            Our time-honored process transforms the finest olives into liquid gold, preserving the authentic flavors and
-                            nutritional benefits that have nourished generations. Experience the journey from grove to bottle,
-                            where passion meets perfection in every drop.
-                        </motion.p>
+                            <a href="https://www.instagram.com/agnogourmet" target="_blank" rel="noopener noreferrer">
+                                <img src={image1} alt="Image 1" className="rounded-2xl w-32 h-32 object-cover cursor-pointer hover:opacity-80 transition-opacity" />
+                            </a>
+                            <a href="https://www.instagram.com/agnogourmet" target="_blank" rel="noopener noreferrer">
+                                <img src={image2} alt="Image 2" className="rounded-2xl w-32 h-32 object-cover cursor-pointer hover:opacity-80 transition-opacity" />
+                            </a>
+                            <a href="https://www.instagram.com/agnogourmet" target="_blank" rel="noopener noreferrer">
+                                <img src={image3} alt="Image 3" className="rounded-2xl w-32 h-32 object-cover cursor-pointer hover:opacity-80 transition-opacity" />
+                            </a>
+                            <a href="https://www.instagram.com/agnogourmet" target="_blank" rel="noopener noreferrer">
+                                <img src={image4} alt="Image 4" className="rounded-2xl w-32 h-32 object-cover cursor-pointer hover:opacity-80 transition-opacity" />
+                            </a>
+                            <a href="https://www.instagram.com/agnogourmet" target="_blank" rel="noopener noreferrer">
+                                <img src={image5} alt="Image 5" className="rounded-2xl w-32 h-32 object-cover cursor-pointer hover:opacity-80 transition-opacity" />
+                            </a>
+                        </motion.div>
                     </div>
                 </section>
 

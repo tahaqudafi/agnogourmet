@@ -29,7 +29,7 @@ const About = () => {
         offset: ["start center", "end start"]
     });
 
-    const basketTilt = useTransform(scrollYProgress, [0, 1], [0, 60]);
+    const basketTilt = useTransform(scrollYProgress, [0, 1], [-20, 60]);
 
     // Olive falling animation - drops vertically, shrinks and disappears into funnel
     const oliveY = useTransform(scrollYProgress, [0.3, 0.8], [0, 385]);

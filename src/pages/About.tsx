@@ -156,18 +156,18 @@ const About = () => {
                         {/* Independent Basket Description - Positioned next to basket */}
                         <div className="relative">
                             <motion.div
-                                className="absolute space-y-3 text-right pointer-events-none hidden md:block"
+                                className="absolute space-y-8 text-right pointer-events-none hidden md:block"
                                 style={{
                                     top: '-30px',
-                                    left: '65%',
+                                    left: '73%',
                                     transform: 'translateY(-50%)'
                                 }}
                                 initial={{ opacity: 0, x: 30 }}
                                 animate={isOlivesInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
                                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
                             >
-                                <p className="text-lg font-serif" style={{ color: '#22372b', transform: 'scale(2)' }}>Freshly harvested</p>
-                                <p className="text-lg font-serif" style={{ color: '#22372b', transform: 'scale(2)' }}>With care</p>
+                                <p className="text-lg font-serif" style={{ color: '#22372b', transform: 'scale(3)' }}>Freshly harvested</p>
+                                <p className="text-lg font-serif" style={{ color: '#22372b', transform: 'scale(3)' }}>With care</p>
                             </motion.div>
                         </div>
 
@@ -176,14 +176,14 @@ const About = () => {
                             {/* Left description for funnel */}
                             <motion.div
                                 className="absolute left-0 space-y-3 text-left hidden md:block"
-                                style={{ marginLeft: '200px', marginTop: '580px' }}
+                                style={{ marginLeft: '120px', marginTop: '580px' }}
                                 initial={{ opacity: 0, x: -30 }}
                                 animate={isOlivesInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
                                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}
                             >
-                                <p className="text-lg font-serif" style={{ color: '#22372b', transform: 'scale(2)' }}>Independently lab tested</p>
-                                <p className="text-lg font-serif" style={{ color: '#22372b', transform: 'scale(2)' }}>Acidity below 0.45</p>
-                                <p className="text-lg font-serif" style={{ color: '#22372b', transform: 'scale(2)' }}>& polyphenols 355 mg/kg</p>
+                                <p className="text-lg font-serif" style={{ color: '#22372b', transform: 'scale(2.3)' }}>Independently lab tested</p>
+                                <p className="text-lg font-serif" style={{ color: '#22372b', transform: 'scale(2.3)' }}>Acidity below 0.45</p>
+                                <p className="text-lg font-serif" style={{ color: '#22372b', transform: 'scale(2.3)' }}>& polyphenols 355 mg/kg</p>
                             </motion.div>
 
                             <motion.img

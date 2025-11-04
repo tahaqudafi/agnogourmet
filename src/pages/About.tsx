@@ -2,7 +2,7 @@ import { Navbar } from "@/components/navigation/Navbar";
 import { NewsletterFooter } from "@/components/sections/NewsletterFooter";
 import { PageTransition } from "@/components/PageTransition";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import basketSvg from "@/assets/basket.svg";
 import oliveSvg from "@/assets/olive.svg";
 import funnelSvg from "@/assets/funnel.svg";
@@ -21,8 +21,12 @@ const About = () => {
     const olivesRef = useRef(null);
     const basketRef = useRef(null);
     const oliveDropRef = useRef(null);
+    const freshlyHarvestedRef = useRef(null);
+    const labTestedRef = useRef(null);
     const isHeroInView = useInView(heroRef, { once: true, margin: "-100px" });
     const isOlivesInView = useInView(olivesRef, { once: true, margin: "-100px" });
+    const isFreshlyHarvestedInView = useInView(freshlyHarvestedRef, { once: true, margin: "-50px" });
+    const isLabTestedInView = useInView(labTestedRef, { once: true, margin: "-50px" });
 
     // Scroll-based animation for the basket - simple tilt
     const { scrollYProgress } = useScroll({
@@ -55,19 +59,6 @@ const About = () => {
     // Funnel shake animation - triggers right after olive animation ends
     const funnelShakeX = useTransform(scrollYProgress, [0.8, 0.82, 0.84, 0.86, 0.88], [0, -3, 3, -2, 0]);
     const funnelShakeY = useTransform(scrollYProgress, [0.8, 0.82, 0.84, 0.86, 0.88], [0, -2, 2, -1, 0]);
-
-
-
-
-
-
-
-
-
-    // Scroll to top when component mounts
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
 
     return (
         <PageTransition>
@@ -199,13 +190,14 @@ const About = () => {
                         {/* Independent Basket Description - Positioned next to basket */}
                         <div className="relative">
                             <motion.div
+                                ref={freshlyHarvestedRef}
                                 className="absolute space-y-2 md:space-y-8 text-center md:text-right pointer-events-none left-[30%] md:left-[70%] transform -translate-x-1/2 -translate-y-1/2 md:translate-x-[-50%]"
                                 style={{
                                     top: '-30px'
                                 }}
                                 initial={{ opacity: 0, x: 30 }}
-                                animate={isOlivesInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-                                transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+                                animate={isFreshlyHarvestedInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+                                transition={{ duration: 0.8, ease: "easeOut" }}
                             >
                                 <p className="text-lg font-serif scale-100 md:scale-[3]" style={{ color: '#22372b' }}>Freshly harvested</p>
                                 <p className="text-lg font-serif scale-100 md:scale-[3]" style={{ color: '#22372b' }}>With care</p>
@@ -216,13 +208,14 @@ const About = () => {
                         <div className="relative flex items-center justify-center mt-32">
                             {/* Left description for funnel */}
                             <motion.div
+                                ref={labTestedRef}
                                 className="absolute space-y-3 text-center md:text-left left-[20%] md:left-[14%] transform -translate-x-1/2 md:translate-x-[-50%]"
                                 style={{
                                     marginTop: '580px'
                                 }}
                                 initial={{ opacity: 0, x: -30 }}
-                                animate={isOlivesInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-                                transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}
+                                animate={isLabTestedInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+                                transition={{ duration: 0.8, ease: "easeOut" }}
                             >
                                 <p className="text-lg font-serif scale-100 md:scale-[2.3]" style={{ color: '#22372b' }}>Independently lab tested</p>
                                 <p className="text-lg font-serif scale-100 md:scale-[2.3]" style={{ color: '#22372b' }}>Acidity below 0.45</p>

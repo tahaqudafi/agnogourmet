@@ -156,18 +156,16 @@ const About = () => {
                         {/* Independent Basket Description - Positioned next to basket */}
                         <div className="relative">
                             <motion.div
-                                className="absolute space-y-8 text-right pointer-events-none hidden md:block"
+                                className="absolute space-y-2 md:space-y-8 text-center md:text-right pointer-events-none left-[30%] md:left-[70%] transform -translate-x-1/2 -translate-y-1/2 md:translate-x-[-50%]"
                                 style={{
-                                    top: '-30px',
-                                    left: '73%',
-                                    transform: 'translateY(-50%)'
+                                    top: '-30px'
                                 }}
                                 initial={{ opacity: 0, x: 30 }}
                                 animate={isOlivesInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
                                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
                             >
-                                <p className="text-lg font-serif" style={{ color: '#22372b', transform: 'scale(3)' }}>Freshly harvested</p>
-                                <p className="text-lg font-serif" style={{ color: '#22372b', transform: 'scale(3)' }}>With care</p>
+                                <p className="text-lg font-serif scale-100 md:scale-[3]" style={{ color: '#22372b' }}>Freshly harvested</p>
+                                <p className="text-lg font-serif scale-100 md:scale-[3]" style={{ color: '#22372b' }}>With care</p>
                             </motion.div>
                         </div>
 
@@ -175,21 +173,23 @@ const About = () => {
                         <div className="relative flex items-center justify-center mt-32">
                             {/* Left description for funnel */}
                             <motion.div
-                                className="absolute left-0 space-y-3 text-left hidden md:block"
-                                style={{ marginLeft: '120px', marginTop: '580px' }}
+                                className="absolute space-y-3 text-center md:text-left left-[20%] md:left-[14%] transform -translate-x-1/2 md:translate-x-[-50%]"
+                                style={{
+                                    marginTop: '580px'
+                                }}
                                 initial={{ opacity: 0, x: -30 }}
                                 animate={isOlivesInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
                                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}
                             >
-                                <p className="text-lg font-serif" style={{ color: '#22372b', transform: 'scale(2.3)' }}>Independently lab tested</p>
-                                <p className="text-lg font-serif" style={{ color: '#22372b', transform: 'scale(2.3)' }}>Acidity below 0.45</p>
-                                <p className="text-lg font-serif" style={{ color: '#22372b', transform: 'scale(2.3)' }}>& polyphenols 355 mg/kg</p>
+                                <p className="text-lg font-serif scale-100 md:scale-[2.3]" style={{ color: '#22372b' }}>Independently lab tested</p>
+                                <p className="text-lg font-serif scale-100 md:scale-[2.3]" style={{ color: '#22372b' }}>Acidity below 0.45</p>
+                                <p className="text-lg font-serif scale-100 md:scale-[2.3]" style={{ color: '#22372b' }}>& polyphenols 355 mg/kg</p>
                             </motion.div>
 
                             <motion.img
                                 src={funnelSvg}
                                 alt="Funnel"
-                                className="w-28 h-28 md:w-56 md:h-56 object-contain ml-4"
+                                className="w-32 h-32 md:w-56 md:h-56 object-contain ml-4"
                                 style={{
                                     marginLeft: 'calc(1rem - 10px)',
                                     x: funnelShakeX,
@@ -197,18 +197,7 @@ const About = () => {
                                 }}
                             />
 
-                            {/* Right description for funnel - HIDDEN */}
-                            {/* <motion.div
-                                className="absolute right-0 space-y-3 text-right hidden md:block"
-                                style={{ marginRight: '260px', marginTop: '580px' }}
-                                initial={{ opacity: 0, x: 30 }}
-                                animate={isOlivesInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-                                transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}
-                            >
-                                <p className="text-lg font-serif" style={{ color: '#22372b' }}>Independently lab-tested</p>
-                                <p className="text-lg font-serif" style={{ color: '#22372b' }}>Acidity below 0.45</p>
-                                <p className="text-lg font-serif" style={{ color: '#22372b' }}>Polyphenols 355 mg/kg</p>
-                            </motion.div> */}
+
 
                             {/* Olive Drop Content */}
                             <div ref={oliveDropRef} className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 pointer-events-none pb-24 md:pb-96">
@@ -225,17 +214,7 @@ const About = () => {
                                     }}
                                 />
 
-                                {/* Middle description - between funnel and bottle, positioned far left - HIDDEN */}
-                                {/* <motion.div
-                                    className="absolute left-0 text-left space-y-3"
-                                    style={{ top: '200px', marginLeft: '-450px' }}
-                                    initial={{ opacity: 0, x: -30 }}
-                                    animate={isOlivesInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-                                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
-                                >
-                                    <p className="text-lg font-serif font-bold" style={{ color: '#22372b' }}>Plenty of time</p>
-                                    <p className="text-lg font-serif font-bold" style={{ color: '#22372b' }}>To rest and decant</p>
-                                </motion.div> */}
+
 
                                 {/* AGNO Green SVG at bottom of padding */}
                                 <motion.img
@@ -251,23 +230,7 @@ const About = () => {
                                     }}
                                 />
 
-                                {/* Right description for bottle - HIDDEN */}
-                                {/* <motion.div
-                                    className="absolute space-y-3 text-right hidden md:block"
-                                    style={{
-                                        top: '400px',
-                                        right: '-300px',
-                                        transform: 'translateY(-50%)'
-                                    }}
-                                    initial={{ opacity: 0, x: 30 }}
-                                    animate={isOlivesInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-                                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.9 }}
-                                >
-                                    <p className="text-lg font-serif" style={{ color: '#22372b' }}>Lovingly bottled</p>
-                                    <p className="text-lg font-serif" style={{ color: '#22372b' }}>In our designer bottle</p>
-                                    <p className="text-lg font-serif" style={{ color: '#22372b' }}>Available in</p>
-                                    <p className="text-lg font-serif" style={{ color: '#22372b' }}>250 ml and 500 ml</p>
-                                </motion.div> */}
+
                             </div>
                         </div>
                     </div>

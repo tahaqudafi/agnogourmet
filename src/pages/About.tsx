@@ -15,15 +15,21 @@ import image2 from "@/assets/2.png";
 import image3 from "@/assets/3.png";
 import image4 from "@/assets/4.png";
 import image5 from "@/assets/5.png";
+import oliveFarmImage from "@/assets/olivefarm.png";
+import pickingOlivesImage from "@/assets/pickingolives.png";
+import arrowSvg from "@/assets/Arrow.svg";
+import arrowMobSvg from "@/assets/ARROWMOB.svg";
 
 const About = () => {
     const heroRef = useRef(null);
+    const ourOlivesRef = useRef(null);
     const olivesRef = useRef(null);
     const basketRef = useRef(null);
     const oliveDropRef = useRef(null);
     const freshlyHarvestedRef = useRef(null);
     const labTestedRef = useRef(null);
     const isHeroInView = useInView(heroRef, { once: true, margin: "-100px" });
+    const isOurOlivesInView = useInView(ourOlivesRef, { once: true, margin: "-100px" });
     const isOlivesInView = useInView(olivesRef, { once: true, margin: "-100px" });
     const isFreshlyHarvestedInView = useInView(freshlyHarvestedRef, { once: true, margin: "-50px" });
     const isLabTestedInView = useInView(labTestedRef, { once: true, margin: "-50px" });
@@ -64,15 +70,15 @@ const About = () => {
         <PageTransition>
             <style>{`
                 .olives-section-mobile {
-                    min-height: 1500px;
+                    min-height: 1600px;
                 }
                 @media (max-width: 767px) {
                     .olives-section-mobile {
-                        min-height: 1250px;
+                        min-height: 1350px;
                     }
                 }
             `}</style>
-            <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 flex flex-col">
+            <div className="min-h-screen bg-[#f5f1eb] flex flex-col">
                 <Navbar />
 
                 {/* Hero Section */}
@@ -136,7 +142,7 @@ const About = () => {
                     </div>
                 </section>
 
-                {/* Our Olives Section - Sized to end under bottle */}
+                {/* From Grove to Bottle Section - Sized to end under bottle */}
                 <section
                     ref={olivesRef}
                     className="py-16 px-4 md:px-8 lg:px-16 olives-section-mobile"
@@ -149,7 +155,7 @@ const About = () => {
                             animate={isOlivesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
                         >
-                            Our Olives
+                            From Grove to Bottle
                         </motion.h2>
 
                         {/* Basket and Olive Animation Container */}
@@ -269,6 +275,91 @@ const About = () => {
 
                             </div>
                         </div>
+                    </div>
+                </section>
+
+                {/* Our Olives Section */}
+                <section ref={ourOlivesRef} className="pt-16 pb-32 md:pb-48 lg:pb-64 px-4 md:px-8 lg:px-16 bg-[#f5f1eb]">
+                    <div className="max-w-6xl mx-auto">
+                        <motion.div
+                            className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center relative"
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={isOurOlivesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                        >
+                            {/* Arrow pointing from olive farm to picking olives - Desktop only */}
+                            <motion.img
+                                src={arrowSvg}
+                                alt="Arrow pointing to olive picking"
+                                className="hidden lg:block absolute top-[11%] left-[11%] transform -translate-x-1/2 -translate-y-1/2 w-[650px] h-[320px] z-10 pointer-events-none"
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={isOurOlivesInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                                transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+                            />
+
+                            {/* Mobile Arrow pointing from down to up - Mobile only */}
+                            <motion.img
+                                src={arrowMobSvg}
+                                alt="Mobile arrow pointing up"
+                                className="block lg:hidden absolute top-[39%] left-[-0%] transform -translate-x-1/2 -translate-y-1/2 w-[40%] h-[30%] z-10 pointer-events-none"
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={isOurOlivesInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                                transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+                            />
+
+                            {/* Left Column - Text Content */}
+                            <div className="space-y-8">
+                                {/* Main Headline */}
+                                <div>
+                                    <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-normal leading-tight mb-4" style={{ color: '#22372b' }}>
+                                        Picked, pressed, and bottled in the same season.
+                                    </h2>
+                                </div>
+
+                                {/* Spacer to push content down by 50% - desktop only */}
+                                <div className="lg:h-40"></div>
+
+                                {/* Bottom Left - Small Image and Text */}
+                                <div className="flex gap-6 items-start md:items-center lg:items-end">
+                                    <div className="flex-shrink-0">
+                                        <img
+                                            src={pickingOlivesImage}
+                                            alt="Picking olives"
+                                            className="w-[128px] h-[180px] md:w-[160px] md:h-[220px] lg:w-[220px] lg:h-[384px] object-cover rounded-2xl"
+                                        />
+                                    </div>
+                                    <div className="flex-1 lg:pb-0">
+                                        <h3 className="font-serif text-lg md:text-xl font-semibold mb-3 uppercase tracking-wide" style={{ color: '#22372b' }}>
+                                            The art of patience
+                                        </h3>
+                                        <p className="text-sm md:text-base leading-relaxed font-mono" style={{ color: '#22372b' }}>
+                                            On the island of Thassos, time moves differently.
+                                            The air is warm with sea salt, and the Throumba olives ripen slowly under the sun, shrinking, darkening, and filling with flavor.
+
+                                            When the moment is right, we hand-pick each olive,
+                                            press it within 1-2 hours in small batches
+                                            and bottle it in the very same season.
+
+                                            Never mixed, never rushed.
+
+                                            This is how we honor the rhythm of Thassos
+                                            slow, patient, and profoundly pure.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Right Column - Large Image */}
+                            <div className="flex justify-center lg:justify-end">
+                                <img
+                                    src={oliveFarmImage}
+                                    alt="Olive farm landscape"
+                                    className="w-full max-w-md h-80 md:h-96 lg:w-70 lg:h-[600px] object-cover rounded-2xl"
+                                />
+                            </div>
+                        </motion.div>
+
+
                     </div>
                 </section>
 

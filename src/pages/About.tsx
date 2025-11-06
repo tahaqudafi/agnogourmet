@@ -281,20 +281,12 @@ const About = () => {
                 {/* Our Olives Section */}
                 <section ref={ourOlivesRef} className="pt-16 pb-16 px-4 md:px-8 lg:px-16 bg-[#f5f1eb]">
                     <div className="max-w-6xl mx-auto">
-                        <motion.div
-                            className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center relative"
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={isOurOlivesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                            transition={{ duration: 0.8, ease: "easeOut" }}
-                        >
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center relative">
                             {/* Arrow pointing from olive farm to picking olives - Desktop only */}
-                            <motion.img
+                            <img
                                 src={arrowSvg}
                                 alt="Arrow pointing to olive picking"
-                                className="hidden lg:block absolute top-[11%] left-[11%] transform -translate-x-1/2 -translate-y-1/2 w-[650px] h-[320px] z-10 pointer-events-none"
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={isOurOlivesInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                                transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+                                className="hidden lg:block absolute top-[32%] left-[39%] transform -translate-x-1/2 -translate-y-1/2 w-[650px] h-[320px] z-10 pointer-events-none"
                             />
 
                             {/* Mobile Arrow pointing from down to up - Mobile only */}
@@ -375,7 +367,7 @@ const About = () => {
                                     className="w-full max-w-md h-80 md:h-96 lg:w-70 lg:h-[600px] object-cover rounded-2xl"
                                 />
                             </div>
-                        </motion.div>
+                        </div>
 
 
                     </div>

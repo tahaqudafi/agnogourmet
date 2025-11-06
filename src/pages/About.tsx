@@ -17,8 +17,8 @@ import image4 from "@/assets/4.png";
 import image5 from "@/assets/5.png";
 import oliveFarmImage from "@/assets/olivefarm.png";
 import pickingOlivesImage from "@/assets/pickingolives.png";
-import arrowSvg from "@/assets/Arrow.svg";
-import arrowMobSvg from "@/assets/ARROWMOB.svg";
+import arrowSvg from "@/assets/Arrow.svg?url";
+import arrowMobSvg from "@/assets/ARROWMOB.svg?url";
 
 const About = () => {
     const heroRef = useRef(null);

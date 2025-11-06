@@ -279,7 +279,7 @@ const About = () => {
                 </section>
 
                 {/* Our Olives Section */}
-                <section ref={ourOlivesRef} className="pt-16 pb-32 md:pb-48 lg:pb-64 px-4 md:px-8 lg:px-16 bg-[#f5f1eb]">
+                <section ref={ourOlivesRef} className="pt-16 pb-16 px-4 md:px-8 lg:px-16 bg-[#f5f1eb]">
                     <div className="max-w-6xl mx-auto">
                         <motion.div
                             className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center relative"
@@ -382,7 +382,7 @@ const About = () => {
                 </section>
 
                 {/* See more of us here Section */}
-                <section className="pb-16 px-4 md:px-8 lg:px-16" style={{ paddingTop: '15rem' }}>
+                <section className="pb-16 px-4 md:px-8 lg:px-16" style={{ paddingTop: '8rem' }}>
                     <div className="max-w-6xl mx-auto text-center">
                         <motion.h2
                             className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-12"

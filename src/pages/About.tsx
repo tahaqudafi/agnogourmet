@@ -15,7 +15,7 @@ import image2 from "@/assets/2.png";
 import image3 from "@/assets/3.png";
 import image4 from "@/assets/4.png";
 import image5 from "@/assets/5.png";
-import oliveFarmImage from "@/assets/olivefarm.webp";
+import oliveFarmImage from "@/assets/olivefarm.png";
 import pickingOlivesImage from "@/assets/pickingolives.png";
 import arrowSvg from "@/assets/arrow.svg";
 import arrowMobSvg from "@/assets/ARROWMOB.svg";

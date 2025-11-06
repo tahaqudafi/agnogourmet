@@ -301,10 +301,28 @@ const About = () => {
                             <motion.img
                                 src={arrowMobSvg}
                                 alt="Mobile arrow pointing up"
-                                className="block lg:hidden absolute top-[39%] left-[-0%] transform -translate-x-1/2 -translate-y-1/2 w-[40%] h-[30%] z-10 pointer-events-none"
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={isOurOlivesInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                                transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+                                className="block lg:hidden absolute top-[35%] left-[-0%] transform -translate-x-1/2 -translate-y-1/2 w-[40%] h-[30%] z-10 pointer-events-none"
+                                initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                                animate={isOurOlivesInView ? {
+                                    opacity: 1,
+                                    scale: 1,
+                                    y: [0, -6, 0]
+                                } : {
+                                    opacity: 0,
+                                    scale: 0.8,
+                                    y: 10
+                                }}
+                                transition={{
+                                    opacity: { duration: 0.8, ease: "easeOut", delay: 0.6 },
+                                    scale: { duration: 0.8, ease: "easeOut", delay: 0.6 },
+                                    y: {
+                                        duration: 1.8,
+                                        ease: "easeInOut",
+                                        repeat: Infinity,
+                                        repeatType: "loop",
+                                        delay: 1.4
+                                    }
+                                }}
                             />
 
                             {/* Left Column - Text Content */}

@@ -71,7 +71,7 @@ export const NewsletterFooter = () => {
         </div>
 
         {/* Footer Links */}
-        <div className="flex flex-wrap justify-center items-center gap-4 mb-6 text-sm">
+        <div className="flex flex-wrap justify-center items-center gap-2 mb-6 text-xs">
           <a
             href="https://www.agnogourmet.com/policies/privacy-policy"
             target="_blank"
@@ -124,6 +124,15 @@ export const NewsletterFooter = () => {
             className="text-white/70 hover:text-white transition-colors duration-300"
           >
             Refund Policy
+          </a>
+          <span className="text-white/30">•</span>
+          <a
+            href="https://www.agnogourmet.com/pages/contact"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/70 hover:text-white transition-colors duration-300"
+          >
+            Contact
           </a>
         </div>
 

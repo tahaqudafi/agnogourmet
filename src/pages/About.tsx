@@ -19,6 +19,11 @@ import oliveFarmImage from "@/assets/olivefarm.png";
 import pickingOlivesImage from "@/assets/pickingolives.png";
 import arrowSvg from "@/assets/arrow.svg";
 import arrowMobSvg from "@/assets/ARROWMOB.svg";
+import annaLogo from "@/assets/ANNA.svg";
+import tideLogo from "@/assets/TIDE.svg";
+import violasLogo from "@/assets/VIOLAS.svg";
+import wyldLogo from "@/assets/wyld.svg";
+import bloomLogo from "@/assets/bloom.svg";
 
 const About = () => {
     const heroRef = useRef(null);
@@ -77,12 +82,40 @@ const About = () => {
                         min-height: 1350px;
                     }
                 }
+                @keyframes marquee {
+                    0% {
+                        transform: translateX(0%);
+                    }
+                    100% {
+                        transform: translateX(-100%);
+                    }
+                }
+                .marquee-container {
+                    overflow: hidden;
+                    position: relative;
+                    width: 100%;
+                    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+                    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+                }
+                .marquee-content {
+                    display: flex;
+                    width: fit-content;
+                    align-items: center;
+                }
+                .marquee-group {
+                    display: flex;
+                    align-items: center;
+                    flex-shrink: 0;
+                    min-width: 100%;
+                    justify-content: space-around;
+                    animation: marquee 20s linear infinite;
+                }
             `}</style>
             <div className="min-h-screen bg-[#f5f1eb] flex flex-col">
                 <Navbar />
 
                 {/* Hero Section */}
-                <section ref={heroRef} className="pt-32 pb-8 px-4 md:px-8 lg:px-16">
+                <section ref={heroRef} className="pt-32 pb-0 md:pb-8 px-4 md:px-8 lg:px-16">
                     <div className="max-w-6xl mx-auto text-center">
                         <motion.h1
                             className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
@@ -373,41 +406,44 @@ const About = () => {
                     </div>
                 </section>
 
-                {/* See more of us here Section */}
+                {/* Our Partners Section */}
                 <section className="pt-16 md:pt-32 pb-16 px-4 md:px-8 lg:px-16">
                     <div className="max-w-6xl mx-auto text-center">
                         <motion.h2
-                            className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-12"
+                            className="font-serif text-2xl md:text-2.5xl lg:text-3xl font-normal leading-tight mb-12"
                             style={{ color: '#22372b' }}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
                         >
-                            See more of us here
+                            Where quality connects
                         </motion.h2>
+                        
+                        {/* Infinite Marquee */}
                         <motion.div
-                            className="flex justify-center gap-4"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            className="marquee-container mt-8"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                         >
-                            <a href="https://www.instagram.com/agnogourmet" target="_blank" rel="noopener noreferrer">
-                                <img src={image1} alt="Image 1" className="rounded-2xl w-32 h-32 object-cover cursor-pointer hover:opacity-80 transition-opacity" />
-                            </a>
-                            <a href="https://www.instagram.com/agnogourmet" target="_blank" rel="noopener noreferrer">
-                                <img src={image2} alt="Image 2" className="rounded-2xl w-32 h-32 object-cover cursor-pointer hover:opacity-80 transition-opacity" />
-                            </a>
-                            <a href="https://www.instagram.com/agnogourmet" target="_blank" rel="noopener noreferrer">
-                                <img src={image3} alt="Image 3" className="rounded-2xl w-32 h-32 object-cover cursor-pointer hover:opacity-80 transition-opacity" />
-                            </a>
-                            <a href="https://www.instagram.com/agnogourmet" target="_blank" rel="noopener noreferrer">
-                                <img src={image4} alt="Image 4" className="rounded-2xl w-32 h-32 object-cover cursor-pointer hover:opacity-80 transition-opacity" />
-                            </a>
-                            <a href="https://www.instagram.com/agnogourmet" target="_blank" rel="noopener noreferrer">
-                                <img src={image5} alt="Image 5" className="rounded-2xl w-32 h-32 object-cover cursor-pointer hover:opacity-80 transition-opacity" />
-                            </a>
+                            <div className="marquee-content">
+                                <div className="marquee-group">
+                                    <img src={annaLogo} alt="ANNA" className="h-7 md:h-8 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
+                                    <img src={tideLogo} alt="TIDE" className="h-11 md:h-14 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
+                                    <img src={violasLogo} alt="VIOLAS" className="h-11 md:h-14 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
+                                    <img src={wyldLogo} alt="WYLD" className="h-11 md:h-14 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
+                                    <img src={bloomLogo} alt="BLOOM" className="h-7 md:h-9 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
+                                </div>
+                                <div className="marquee-group" aria-hidden="true">
+                                    <img src={annaLogo} alt="ANNA" className="h-7 md:h-8 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
+                                    <img src={tideLogo} alt="TIDE" className="h-11 md:h-14 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
+                                    <img src={violasLogo} alt="VIOLAS" className="h-11 md:h-14 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
+                                    <img src={wyldLogo} alt="WYLD" className="h-11 md:h-14 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
+                                    <img src={bloomLogo} alt="BLOOM" className="h-7 md:h-9 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
+                                </div>
+                            </div>
                         </motion.div>
                     </div>
                 </section>

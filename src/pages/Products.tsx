@@ -112,10 +112,10 @@ const Products = () => {
                 <Navbar />
 
                 {/* Hero Section */}
-                <section ref={heroRef} className="pt-32 pb-16 px-4 md:px-8 lg:px-16">
+                <section ref={heroRef} className="pt-32 pb-4 px-4 md:px-8 lg:px-16">
                     <div className="max-w-6xl mx-auto text-center">
                         <motion.h1
-                            className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+                            className="font-serif text-[1.625rem] md:text-[2.0625rem] lg:text-[2.4375rem] font-bold mb-6"
                             style={{ color: '#22372b' }}
                             initial={{ opacity: 0, y: 30 }}
                             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -130,8 +130,7 @@ const Products = () => {
                             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                         >
-                            Discover our collection of premium Greek products, crafted with tradition and passion.
-                            From extra virgin olive oils to natural honey, each product embodies the authentic taste of the Mediterranean.
+                            From olive groves and wild hives to mountain herbs, each creation is antioxidant-rich, full of flavor, and made in small batches by local farmers who live by nature’s rhythm.
                         </motion.p>
                     </div>
                 </section>

@@ -374,7 +374,7 @@ const About = () => {
                 </section>
 
                 {/* See more of us here Section */}
-                <section className="pb-16 px-4 md:px-8 lg:px-16" style={{ paddingTop: '8rem' }}>
+                <section className="pt-16 md:pt-32 pb-16 px-4 md:px-8 lg:px-16">
                     <div className="max-w-6xl mx-auto text-center">
                         <motion.h2
                             className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-12"

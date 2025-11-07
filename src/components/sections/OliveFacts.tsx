@@ -48,8 +48,8 @@ export const OliveFacts = () => {
           />
           <FactCard
             image={lab}
-            title="3rd Party Lab-Tested"
-            description="We 3rd party lab-test the olive oil to ensure you get the real deal."
+            title="Third Party Lab-Tested"
+            description="We third party lab-test the olive oil to ensure you get the real deal."
           />
         </div>
       </div>

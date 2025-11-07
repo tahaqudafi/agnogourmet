@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
     allowedHosts: [
-      "temperatures-mirrors-array-commissioners.trycloudflare.com",
+      "https://duke-since-seconds-builds.trycloudflare.com",
       ".trycloudflare.com"
     ],
   },

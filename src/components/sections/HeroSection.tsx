@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import webVideo from "@/assets/web1.webm";
+import mobileVideo from "@/assets/web.mp4";
 import fallbackImage from "@/assets/lpm.png";
 import { SocialMediaIcons } from "@/components/SocialMediaIcons";
 
@@ -8,10 +9,12 @@ export const HeroSection = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1440);
   const [videoError, setVideoError] = useState(false);
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 1024 : false);
 
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
+      setIsMobile(window.innerWidth < 1024);
     };
 
     window.addEventListener('resize', handleResize);
@@ -100,7 +103,7 @@ export const HeroSection = () => {
       <video
         ref={videoRef}
         className="absolute opacity-0 pointer-events-none"
-        src={webVideo}
+        src={isMobile ? mobileVideo : webVideo}
         preload="auto"
         muted
         loop

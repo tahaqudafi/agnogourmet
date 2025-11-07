@@ -117,7 +117,7 @@ const About = () => {
                                 </p>
 
                                 {/* Island Image */}
-                                <div className="rounded-2xl h-64 overflow-hidden">
+                                <div className="hidden md:block rounded-2xl h-64 overflow-hidden">
                                     <img
                                         src={islandImage}
                                         alt="Thasos island view"
@@ -127,7 +127,7 @@ const About = () => {
                             </div>
 
                             {/* Map Placeholder - Full height match */}
-                            <div className="flex-1 bg-[#22372b] rounded-2xl p-8 min-h-[500px] lg:min-h-full relative overflow-hidden flex items-end">
+                            <div className="flex-1 bg-[#22372b] rounded-2xl p-8 min-h-[200px] md:min-h-[5000px] lg:min-h-full relative overflow-hidden flex items-end">
 
 
                                 {/* Thasos Map Image - Full coverage */}
@@ -286,14 +286,14 @@ const About = () => {
                             <img
                                 src={arrowSvg}
                                 alt="Arrow pointing to olive picking"
-                                className="hidden lg:block absolute top-[32%] left-[39%] transform -translate-x-1/2 -translate-y-1/2 w-[650px] h-[320px] z-10 pointer-events-none"
+                                className="hidden lg:block absolute top-[37%] left-[39%] transform -translate-x-1/2 -translate-y-1/2 w-[650px] h-[320px] z-10 pointer-events-none"
                             />
 
                             {/* Mobile Arrow pointing from down to up - Mobile only */}
                             <motion.img
                                 src={arrowMobSvg}
                                 alt="Mobile arrow pointing up"
-                                className="block lg:hidden absolute top-[35%] left-[-0%] transform -translate-x-1/2 -translate-y-1/2 w-[40%] h-[30%] z-10 pointer-events-none"
+                                className="block lg:hidden absolute top-[38%] left-[-0%] transform -translate-x-1/2 -translate-y-1/2 w-[40%] h-[30%] z-10 pointer-events-none"
                                 initial={{ opacity: 0, scale: 0.8, y: 10 }}
                                 animate={isOurOlivesInView ? {
                                     opacity: 1,
@@ -322,7 +322,7 @@ const About = () => {
                                 {/* Main Headline */}
                                 <div>
                                     <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-normal leading-tight mb-4" style={{ color: '#22372b' }}>
-                                        Picked, pressed, and bottled in the same season.
+                                        Harvested, cold-pressed, and bottled within the same season.
                                     </h2>
                                 </div>
 

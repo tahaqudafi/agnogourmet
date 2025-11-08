@@ -1,9 +1,9 @@
 import { MarqueeMobile } from "@/components/ui/marquee-mobile";
-import violasSvg from "@/assets/violas.svg";
-import tideSvg from "@/assets/tide.svg";
-import wyldSvg from "@/assets/wyld.svg";
+import violasSvg from "@/assets/viola.svg";
+import tideSvg from "@/assets/tid.svg";
+import wyldSvg from "@/assets/wyl.svg";
 import annaSvg from "@/assets/anna.svg";
-import bloomSvg from "@/assets/bloom.svg";
+import bloomSvg from "@/assets/bloo.svg";
 
 export const WhereQualityConnectsMobile = () => {
   const brands = [

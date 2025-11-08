@@ -1,17 +1,17 @@
 import { Marquee } from "@/components/ui/marquee";
-import violasSvg from "@/assets/violas.svg";
-import tideSvg from "@/assets/tide.svg";
-import wyldSvg from "@/assets/wyld.svg";
-import annaSvg from "@/assets/anna.svg";
-import bloomSvg from "@/assets/bloom.svg";
+import violaSvg from "@/assets/viola.svg";
+import tidSvg from "@/assets/tid.svg";
+import wylSvg from "@/assets/wyl.svg";
+import annSvg from "@/assets/anna.svg";
+import blooSvg from "@/assets/bloo.svg";
 
 export const WhereQualityConnectsDesktop = () => {
   const brands = [
-    { src: violasSvg, alt: "Violas", className: "h-6 lg:h-7" }, // 143mm x 29mm - very wide
-    { src: tideSvg, alt: "Tide", className: "h-8 lg:h-9" }, // 144mm x 66mm - tallest
-    { src: bloomSvg, alt: "Bloom", className: "h-6 lg:h-7" }, // 136mm x 23mm - wide and short
-    { src: wyldSvg, alt: "Wyld", className: "h-7 lg:h-8" }, // 109mm x 52mm - medium
-    { src: annaSvg, alt: "Anna", className: "h-5 lg:h-6" }, // 131mm x 13mm - very wide and short
+    { src: violaSvg, alt: "Violas", className: "h-6 lg:h-7" }, // 143mm x 29mm - very wide
+    { src: tidSvg, alt: "Tide", className: "h-8 lg:h-9" }, // 144mm x 66mm - tallest
+    { src: blooSvg, alt: "Bloom", className: "h-6 lg:h-7" }, // 136mm x 23mm - wide and short
+    { src: wylSvg, alt: "Wyld", className: "h-7 lg:h-8" }, // 109mm x 52mm - medium
+    { src: annSvg, alt: "Anna", className: "h-5 lg:h-6" }, // 131mm x 13mm - very wide and short
   ];
 
   return (

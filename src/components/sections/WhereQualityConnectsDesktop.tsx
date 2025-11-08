@@ -2,7 +2,7 @@ import { Marquee } from "@/components/ui/marquee";
 import violaSvg from "@/assets/viola.svg";
 import tidSvg from "@/assets/tid.svg";
 import wylSvg from "@/assets/wyl.svg";
-import annSvg from "@/assets/anna.svg";
+import annSvg from "@/assets/ANNA.svg";
 import blooSvg from "@/assets/bloo.svg";
 
 export const WhereQualityConnectsDesktop = () => {

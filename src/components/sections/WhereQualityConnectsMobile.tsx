@@ -2,7 +2,7 @@ import { MarqueeMobile } from "@/components/ui/marquee-mobile";
 import violasSvg from "@/assets/viola.svg";
 import tideSvg from "@/assets/tid.svg";
 import wyldSvg from "@/assets/wyl.svg";
-import annaSvg from "@/assets/anna.svg";
+import annaSvg from "@/assets/ANNA.svg";
 import bloomSvg from "@/assets/bloo.svg";
 
 export const WhereQualityConnectsMobile = () => {

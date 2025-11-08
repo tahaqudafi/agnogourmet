@@ -82,12 +82,12 @@ const About = () => {
                         min-height: 1350px;
                     }
                 }
-                @keyframes marquee {
+                @keyframes scroll {
                     0% {
-                        transform: translateX(0%);
+                        transform: translateX(0);
                     }
                     100% {
-                        transform: translateX(-100%);
+                        transform: translateX(-50%);
                     }
                 }
                 .marquee-container {
@@ -99,22 +99,24 @@ const About = () => {
                 }
                 .marquee-content {
                     display: flex;
-                    width: fit-content;
+                    width: max-content;
                     align-items: center;
+                    animation: scroll 14s linear infinite;
                 }
-                .marquee-group {
+                .marquee-track {
                     display: flex;
                     align-items: center;
-                    flex-shrink: 0;
                     gap: 3rem;
-                    animation: marquee 16s linear infinite;
+                    flex-shrink: 0;
                     padding-right: 3rem;
                 }
                 @media (min-width: 768px) {
-                    .marquee-group {
+                    .marquee-content {
+                        animation: scroll 20s linear infinite;
+                    }
+                    .marquee-track {
                         gap: 5rem;
                         padding-right: 5rem;
-                        animation: marquee 20s linear infinite;
                     }
                 }
             `}</style>
@@ -422,21 +424,14 @@ const About = () => {
                         
                         <div className="marquee-container py-8">
                             <div className="marquee-content">
-                                <div className="marquee-group">
+                                <div className="marquee-track">
                                     <img src={annaLogo} alt="Anna" className="h-6 md:h-8 w-auto object-contain scale-90" />
                                     <img src={tideLogo} alt="Tide" className="h-6 md:h-8 w-auto object-contain" />
                                     <img src={violasLogo} alt="Violas" className="h-6 md:h-8 w-auto object-contain" />
                                     <img src={wyldLogo} alt="Wyld" className="h-6 md:h-8 w-auto object-contain" />
                                     <img src={bloomLogo} alt="Bloom" className="h-6 md:h-8 w-auto object-contain scale-90" />
                                 </div>
-                                <div className="marquee-group">
-                                    <img src={annaLogo} alt="Anna" className="h-6 md:h-8 w-auto object-contain scale-90" />
-                                    <img src={tideLogo} alt="Tide" className="h-6 md:h-8 w-auto object-contain" />
-                                    <img src={violasLogo} alt="Violas" className="h-6 md:h-8 w-auto object-contain" />
-                                    <img src={wyldLogo} alt="Wyld" className="h-6 md:h-8 w-auto object-contain" />
-                                    <img src={bloomLogo} alt="Bloom" className="h-6 md:h-8 w-auto object-contain scale-90" />
-                                </div>
-                                <div className="marquee-group">
+                                <div className="marquee-track">
                                     <img src={annaLogo} alt="Anna" className="h-6 md:h-8 w-auto object-contain scale-90" />
                                     <img src={tideLogo} alt="Tide" className="h-6 md:h-8 w-auto object-contain" />
                                     <img src={violasLogo} alt="Violas" className="h-6 md:h-8 w-auto object-contain" />

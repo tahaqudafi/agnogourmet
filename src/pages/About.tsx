@@ -1,5 +1,7 @@
 import { Navbar } from "@/components/navigation/Navbar";
 import { NewsletterFooter } from "@/components/sections/NewsletterFooter";
+import { WhereQualityConnectsDesktop } from "@/components/sections/WhereQualityConnectsDesktop";
+import { WhereQualityConnectsMobile } from "@/components/sections/WhereQualityConnectsMobile";
 import { PageTransition } from "@/components/PageTransition";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -19,11 +21,7 @@ import oliveFarmImage from "@/assets/olivefarm.png";
 import pickingOlivesImage from "@/assets/pickingolives.png";
 import arrowSvg from "@/assets/arrow.svg";
 import arrowMobSvg from "@/assets/ARROWMOB.svg";
-import annaLogo from "@/assets/ANNA.svg";
-import tideLogo from "@/assets/TIDE.svg";
-import violasLogo from "@/assets/VIOLAS.svg";
-import wyldLogo from "@/assets/wyld.svg";
-import bloomLogo from "@/assets/bloom.svg";
+
 
 const About = () => {
     const heroRef = useRef(null);
@@ -82,12 +80,20 @@ const About = () => {
                         min-height: 1350px;
                     }
                 }
-                @keyframes scroll {
-                    0% {
-                        transform: translateX(0);
+                @keyframes marquee-mobile {
+                    from {
+                        transform: translate3d(100vw, 0, 0);
                     }
-                    100% {
-                        transform: translateX(-50%);
+                    to {
+                        transform: translate3d(-100%, 0, 0);
+                    }
+                }
+                @keyframes marquee-desktop {
+                    from {
+                        transform: translate3d(0, 0, 0);
+                    }
+                    to {
+                        transform: translate3d(-50%, 0, 0);
                     }
                 }
                 .marquee-container {
@@ -99,9 +105,10 @@ const About = () => {
                 }
                 .marquee-content {
                     display: flex;
-                    width: max-content;
                     align-items: center;
-                    animation: scroll 14s linear infinite;
+                    width: fit-content;
+                    will-change: transform;
+                    animation: marquee-mobile 12s linear infinite;
                 }
                 .marquee-track {
                     display: flex;
@@ -110,13 +117,19 @@ const About = () => {
                     flex-shrink: 0;
                     padding-right: 3rem;
                 }
+                .marquee-track:last-child {
+                    display: none;
+                }
                 @media (min-width: 768px) {
                     .marquee-content {
-                        animation: scroll 20s linear infinite;
+                        animation: marquee-desktop 20s linear infinite;
                     }
                     .marquee-track {
                         gap: 5rem;
                         padding-right: 5rem;
+                    }
+                    .marquee-track:last-child {
+                        display: flex;
                     }
                 }
             `}</style>
@@ -415,33 +428,11 @@ const About = () => {
                     </div>
                 </section>
 
-                {/* Where Quality Connects - Marquee Section */}
-                <section className="pt-8 md:pt-16 pb-4 md:pb-8 px-4 md:px-8 lg:px-16 bg-[#f5f1eb]">
-                    <div className="max-w-6xl mx-auto">
-                        <h2 className="font-serif text-xl md:text-2xl lg:text-3xl font-normal leading-tight text-center mb-4" style={{ color: '#22372b' }}>
-                            Where quality connects
-                        </h2>
-                        
-                        <div className="marquee-container py-8">
-                            <div className="marquee-content">
-                                <div className="marquee-track">
-                                    <img src={annaLogo} alt="Anna" className="h-6 md:h-8 w-auto object-contain scale-90" />
-                                    <img src={tideLogo} alt="Tide" className="h-6 md:h-8 w-auto object-contain" />
-                                    <img src={violasLogo} alt="Violas" className="h-6 md:h-8 w-auto object-contain" />
-                                    <img src={wyldLogo} alt="Wyld" className="h-6 md:h-8 w-auto object-contain" />
-                                    <img src={bloomLogo} alt="Bloom" className="h-6 md:h-8 w-auto object-contain scale-90" />
-                                </div>
-                                <div className="marquee-track">
-                                    <img src={annaLogo} alt="Anna" className="h-6 md:h-8 w-auto object-contain scale-90" />
-                                    <img src={tideLogo} alt="Tide" className="h-6 md:h-8 w-auto object-contain" />
-                                    <img src={violasLogo} alt="Violas" className="h-6 md:h-8 w-auto object-contain" />
-                                    <img src={wyldLogo} alt="Wyld" className="h-6 md:h-8 w-auto object-contain" />
-                                    <img src={bloomLogo} alt="Bloom" className="h-6 md:h-8 w-auto object-contain scale-90" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                {/* Where Quality Connects - Desktop */}
+                <WhereQualityConnectsDesktop />
+
+                {/* Where Quality Connects - Mobile */}
+                <WhereQualityConnectsMobile />
 
                 <NewsletterFooter />
             </div>

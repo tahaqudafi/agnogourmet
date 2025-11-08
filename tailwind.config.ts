@@ -91,6 +91,10 @@ export default {
         "float": {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" }
+        },
+        "scroll": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" }
         }
       },
       animation: {
@@ -99,7 +103,8 @@ export default {
         "fade-in": "fade-in 0.6s ease-out",
         "fade-in-slow": "fade-in-slow 1s ease-out",
         "scale-in": "scale-in 0.5s ease-out",
-        "float": "float 3s ease-in-out infinite"
+        "float": "float 3s ease-in-out infinite",
+        "scroll": "scroll linear infinite"
       },
     },
   },

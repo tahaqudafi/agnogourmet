@@ -106,9 +106,16 @@ const About = () => {
                     display: flex;
                     align-items: center;
                     flex-shrink: 0;
-                    min-width: 100%;
-                    justify-content: space-around;
-                    animation: marquee 20s linear infinite;
+                    gap: 3rem;
+                    animation: marquee 16s linear infinite;
+                    padding-right: 3rem;
+                }
+                @media (min-width: 768px) {
+                    .marquee-group {
+                        gap: 5rem;
+                        padding-right: 5rem;
+                        animation: marquee 20s linear infinite;
+                    }
                 }
             `}</style>
             <div className="min-h-screen bg-[#f5f1eb] flex flex-col">
@@ -406,45 +413,38 @@ const About = () => {
                     </div>
                 </section>
 
-                {/* Our Partners Section */}
-                <section className="pt-16 md:pt-32 pb-16 px-4 md:px-8 lg:px-16">
-                    <div className="max-w-6xl mx-auto text-center">
-                        <motion.h2
-                            className="font-serif text-2xl md:text-2.5xl lg:text-3xl font-normal leading-tight mb-12"
-                            style={{ color: '#22372b' }}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.8, ease: "easeOut" }}
-                        >
+                {/* Where Quality Connects - Marquee Section */}
+                <section className="pt-8 md:pt-16 pb-4 md:pb-8 px-4 md:px-8 lg:px-16 bg-[#f5f1eb]">
+                    <div className="max-w-6xl mx-auto">
+                        <h2 className="font-serif text-xl md:text-2xl lg:text-3xl font-normal leading-tight text-center mb-4" style={{ color: '#22372b' }}>
                             Where quality connects
-                        </motion.h2>
+                        </h2>
                         
-                        {/* Infinite Marquee */}
-                        <motion.div
-                            className="marquee-container mt-8"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                        >
+                        <div className="marquee-container py-8">
                             <div className="marquee-content">
                                 <div className="marquee-group">
-                                    <img src={annaLogo} alt="ANNA" className="h-7 md:h-8 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
-                                    <img src={tideLogo} alt="TIDE" className="h-11 md:h-14 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
-                                    <img src={violasLogo} alt="VIOLAS" className="h-11 md:h-14 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
-                                    <img src={wyldLogo} alt="WYLD" className="h-11 md:h-14 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
-                                    <img src={bloomLogo} alt="BLOOM" className="h-7 md:h-9 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
+                                    <img src={annaLogo} alt="Anna" className="h-6 md:h-8 w-auto object-contain scale-90" />
+                                    <img src={tideLogo} alt="Tide" className="h-6 md:h-8 w-auto object-contain" />
+                                    <img src={violasLogo} alt="Violas" className="h-6 md:h-8 w-auto object-contain" />
+                                    <img src={wyldLogo} alt="Wyld" className="h-6 md:h-8 w-auto object-contain" />
+                                    <img src={bloomLogo} alt="Bloom" className="h-6 md:h-8 w-auto object-contain scale-90" />
                                 </div>
-                                <div className="marquee-group" aria-hidden="true">
-                                    <img src={annaLogo} alt="ANNA" className="h-7 md:h-8 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
-                                    <img src={tideLogo} alt="TIDE" className="h-11 md:h-14 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
-                                    <img src={violasLogo} alt="VIOLAS" className="h-11 md:h-14 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
-                                    <img src={wyldLogo} alt="WYLD" className="h-11 md:h-14 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
-                                    <img src={bloomLogo} alt="BLOOM" className="h-7 md:h-9 w-auto object-contain mx-8 md:mx-16 flex-shrink-0" />
+                                <div className="marquee-group">
+                                    <img src={annaLogo} alt="Anna" className="h-6 md:h-8 w-auto object-contain scale-90" />
+                                    <img src={tideLogo} alt="Tide" className="h-6 md:h-8 w-auto object-contain" />
+                                    <img src={violasLogo} alt="Violas" className="h-6 md:h-8 w-auto object-contain" />
+                                    <img src={wyldLogo} alt="Wyld" className="h-6 md:h-8 w-auto object-contain" />
+                                    <img src={bloomLogo} alt="Bloom" className="h-6 md:h-8 w-auto object-contain scale-90" />
+                                </div>
+                                <div className="marquee-group">
+                                    <img src={annaLogo} alt="Anna" className="h-6 md:h-8 w-auto object-contain scale-90" />
+                                    <img src={tideLogo} alt="Tide" className="h-6 md:h-8 w-auto object-contain" />
+                                    <img src={violasLogo} alt="Violas" className="h-6 md:h-8 w-auto object-contain" />
+                                    <img src={wyldLogo} alt="Wyld" className="h-6 md:h-8 w-auto object-contain" />
+                                    <img src={bloomLogo} alt="Bloom" className="h-6 md:h-8 w-auto object-contain scale-90" />
                                 </div>
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
                 </section>
 

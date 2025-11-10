@@ -135,12 +135,12 @@ export const Navbar = () => {
               Blog
             </a>
             <a
-              href="https://www.agnogourmet.com/pages/contact"
+              href="https://www.agnogourmet.com/cart"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white transition-colors duration-300 hover:opacity-80"
             >
-              Contact
+              Cart
             </a>
           </div>
         </div>
@@ -159,7 +159,7 @@ export const Navbar = () => {
               { href: "/products", label: "Shop", isLink: true },
               { href: "/about", label: "About", isLink: true },
               { href: "https://www.agnogourmet.com/blogs/news", label: "Blog", isLink: false },
-              { href: "https://www.agnogourmet.com/pages/contact", label: "Contact", isLink: false }
+              { href: "https://www.agnogourmet.com/cart", label: "Cart", isLink: false }
             ].map((item, index) => (
               item.isLink ? (
                 <Link

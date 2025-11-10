@@ -4,7 +4,8 @@ import { WhereQualityConnectsDesktop } from "@/components/sections/WhereQualityC
 import { WhereQualityConnectsMobile } from "@/components/sections/WhereQualityConnectsMobile";
 import { PageTransition } from "@/components/PageTransition";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+import { ExternalLink } from "lucide-react";
 import basketSvg from "@/assets/basket.svg";
 import oliveSvg from "@/assets/olive.svg";
 import funnelSvg from "@/assets/funnel.svg";
@@ -21,9 +22,13 @@ import oliveFarmImage from "@/assets/olivefarm.png";
 import pickingOlivesImage from "@/assets/pickingolives.png";
 import arrowSvg from "@/assets/arrow.svg";
 import arrowMobSvg from "@/assets/ARROWMOB.svg";
+import labTestPdf from "@/assets/LabTest2025.pdf";
 
 
 const About = () => {
+    const [activeCardIndex, setActiveCardIndex] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
+    const [timerProgress, setTimerProgress] = useState(0);
     const heroRef = useRef(null);
     const ourOlivesRef = useRef(null);
     const olivesRef = useRef(null);
@@ -36,6 +41,53 @@ const About = () => {
     const isOlivesInView = useInView(olivesRef, { once: true, margin: "-100px" });
     const isFreshlyHarvestedInView = useInView(freshlyHarvestedRef, { once: true, margin: "-50px" });
     const isLabTestedInView = useInView(labTestedRef, { once: true, margin: "-50px" });
+
+    // Auto-rotate cards on mobile every 3.2 seconds (pauses for 8 seconds on click)
+    useEffect(() => {
+        if (isPaused) return;
+        
+        const interval = setInterval(() => {
+            setActiveCardIndex((prev) => (prev + 1) % 4);
+            setTimerProgress(0); // Reset progress when card changes
+        }, 4000);
+        return () => clearInterval(interval);
+    }, [isPaused]);
+
+    // Timer progress bar animation
+    useEffect(() => {
+        setTimerProgress(0); // Reset on card change
+        
+        const duration = isPaused ? 8000 : 3200; // Slower when paused
+        const startTime = Date.now();
+        
+        const updateProgress = () => {
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min((elapsed / duration) * 100, 100);
+            setTimerProgress(progress);
+            
+            if (progress < 100) {
+                requestAnimationFrame(updateProgress);
+            }
+        };
+        
+        const animationFrame = requestAnimationFrame(updateProgress);
+        return () => cancelAnimationFrame(animationFrame);
+    }, [activeCardIndex, isPaused]);
+
+    // Handle card click - if paused, go to next card and resume; if playing, pause for 8 seconds
+    const handleCardClick = () => {
+        if (isPaused) {
+            // If already paused, go to next card and resume
+            setActiveCardIndex((prev) => (prev + 1) % 4);
+            setIsPaused(false);
+        } else {
+            // If playing, pause for 8 seconds
+            setIsPaused(true);
+            setTimeout(() => {
+                setIsPaused(false);
+            }, 8000);
+        }
+    };
 
     // Scroll-based animation for the basket - simple tilt
     const { scrollYProgress } = useScroll({
@@ -425,6 +477,170 @@ const About = () => {
                         </div>
 
 
+                    </div>
+                </section>
+
+                {/* Lab Results Section */}
+                <section className="py-16 px-4 md:px-8 lg:px-16 bg-[#f5f1eb]">
+                    <div className="max-w-6xl mx-auto">
+                        <motion.div
+                            className="text-center max-w-4xl mx-auto"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                        >
+                            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6" style={{ color: '#22372b' }}>
+                                Lab Results
+                            </h2>
+                            <p className="text-base md:text-lg leading-relaxed mb-8" style={{ color: '#22372b' }}>
+                                You deserve food that's honest and traceable. That's why every batch of our olive oil is independently lab-tested for purity and quality, with results we proudly share with you.
+                            </p>
+                            <motion.a
+                                href={labTestPdf}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-8 py-3 border-2 border-[#22372b] text-[#22372b] font-serif text-base md:text-lg rounded-full hover:bg-[#22372b] hover:text-[#f5f1eb] transition-all inline-flex items-center gap-2"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                Link to lab results
+                                <ExternalLink className="w-5 h-5" />
+                            </motion.a>
+
+                            {/* Lab Results Cards - Mobile Carousel / Desktop Grid */}
+                            <div className="mt-12 mx-auto px-4">
+                                {/* Mobile Carousel - Single card with slide animation */}
+                                <div className="lg:hidden flex justify-center overflow-hidden">
+                                    <div className="relative w-[266px] h-[266px]">
+                                        <motion.div
+                                            key={`card-${activeCardIndex}`}
+                                            className="absolute inset-0 bg-[#22372b] rounded-2xl p-5 flex flex-col justify-between cursor-pointer overflow-hidden"
+                                            onClick={handleCardClick}
+                                            initial={{ x: 300, opacity: 0 }}
+                                            animate={{ x: 0, opacity: 1 }}
+                                            exit={{ x: -300, opacity: 0 }}
+                                            transition={{ duration: 0.5, ease: "easeInOut" }}
+                                            whileTap={{ scale: 0.80}}
+                                        >
+                                            <div className="flex flex-col justify-center flex-1">
+                                            {activeCardIndex === 0 && (
+                                                <div>
+                                                    <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">POLYPHENOLS</h3>
+                                                    <p className="text-[#f5f1eb] text-sm font-semibold mb-1 text-center">355 mg/kg (HPLC)</p>
+                                                    <p className="text-[#f5f1eb] text-xs italic mb-2 text-center">standard &gt; 180 mg/kg</p>
+                                                    <p className="text-[#f5f1eb] text-xs leading-relaxed text-center">
+                                                        Rich in bioactive antioxidants that protect your cells from oxidative stress. These natural compounds are responsible for the bold taste, vibrant aroma, and many of olive oil's scientifically proven health effects.
+                                                    </p>
+                                                </div>
+                                            )}
+                                            {activeCardIndex === 1 && (
+                                                <div>
+                                                    <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">OLEIC ACID</h3>
+                                                    <p className="text-[#f5f1eb] text-sm font-semibold mb-1">69.71 %</p>
+                                                    <p className="text-[#f5f1eb] text-xs italic mb-2">standard ≈ 67 %</p>
+                                                    <p className="text-[#f5f1eb] text-xs leading-relaxed">
+                                                        The main monounsaturated fat found in olive oil — essential for heart and brain health. A high oleic content ensures a rich texture, delicate fruitiness, and a naturally long shelf life.
+                                                    </p>
+                                                </div>
+                                            )}
+                                            {activeCardIndex === 2 && (
+                                                <div>
+                                                    <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">ACIDITY</h3>
+                                                    <p className="text-[#f5f1eb] text-sm font-semibold mb-1">0.42 %</p>
+                                                    <p className="text-[#f5f1eb] text-xs italic mb-2">standard &lt; 0.8 %</p>
+                                                    <p className="text-[#f5f1eb] text-xs leading-relaxed">
+                                                        An exceptional indicator of purity and freshness. Low acidity reflects early harvesting and gentle extraction — resulting in a smoother taste and superior stability.
+                                                    </p>
+                                                </div>
+                                            )}
+                                            {activeCardIndex === 3 && (
+                                                <div>
+                                                    <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">PEROXIDES</h3>
+                                                    <p className="text-[#f5f1eb] text-sm font-semibold mb-1">4.8 meq O₂/kg</p>
+                                                    <p className="text-[#f5f1eb] text-xs italic mb-2">standard &lt; 20 meq O₂/kg</p>
+                                                    <p className="text-[#f5f1eb] text-xs leading-relaxed">
+                                                        A measure of oxidation and freshness. This remarkably low value means the oil is stable, recently produced, and retains its full nutritional strength for longer.
+                                                    </p>
+                                                </div>
+                                            )}
+                                            </div>
+                                            
+                                            {/* Timer Progress Bar */}
+                                            <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20 rounded-b-2xl overflow-hidden">
+                                                <div 
+                                                    className="h-full bg-white transition-all"
+                                                    style={{ width: `${100 - timerProgress}%` }}
+                                                />
+                                            </div>
+                                        </motion.div>
+                                    </div>
+                                </div>
+
+                                {/* Desktop Grid - All 4 cards */}
+                                <div className="hidden lg:grid grid-cols-4 gap-72 justify-items-center place-content-center">
+                                    <motion.div
+                                        className="bg-[#22372b] rounded-2xl p-5 flex flex-col justify-center w-[266px] h-[266px]"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, margin: "-50px" }}
+                                        transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                                    >
+                                        <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">POLYPHENOLS</h3>
+                                        <p className="text-[#f5f1eb] text-sm font-semibold mb-1 text-center">355 mg/kg (HPLC)</p>
+                                        <p className="text-[#f5f1eb] text-xs italic mb-2 text-center">standard &gt; 180 mg/kg</p>
+                                        <p className="text-[#f5f1eb] text-xs leading-relaxed text-center">
+                                            Rich in bioactive antioxidants that protect your cells from oxidative stress. These natural compounds are responsible for the bold taste, vibrant aroma, and many of olive oil's scientifically proven health effects.
+                                        </p>
+                                    </motion.div>
+
+                                    <motion.div
+                                        className="bg-[#22372b] rounded-2xl p-5 flex flex-col justify-center w-[266px] h-[266px]"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, margin: "-50px" }}
+                                        transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                                    >
+                                        <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">OLEIC ACID</h3>
+                                        <p className="text-[#f5f1eb] text-sm font-semibold mb-1">69.71 %</p>
+                                        <p className="text-[#f5f1eb] text-xs italic mb-2">standard ≈ 67 %</p>
+                                        <p className="text-[#f5f1eb] text-xs leading-relaxed">
+                                            The main monounsaturated fat found in olive oil — essential for heart and brain health. A high oleic content ensures a rich texture, delicate fruitiness, and a naturally long shelf life.
+                                        </p>
+                                    </motion.div>
+
+                                    <motion.div
+                                        className="bg-[#22372b] rounded-2xl p-5 flex flex-col justify-center w-[266px] h-[266px]"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, margin: "-50px" }}
+                                        transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+                                    >
+                                        <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">ACIDITY</h3>
+                                        <p className="text-[#f5f1eb] text-sm font-semibold mb-1">0.42 %</p>
+                                        <p className="text-[#f5f1eb] text-xs italic mb-2">standard &lt; 0.8 %</p>
+                                        <p className="text-[#f5f1eb] text-xs leading-relaxed">
+                                            An exceptional indicator of purity and freshness. Low acidity reflects early harvesting and gentle extraction — resulting in a smoother taste and superior stability.
+                                        </p>
+                                    </motion.div>
+
+                                    <motion.div
+                                        className="bg-[#22372b] rounded-2xl p-5 flex flex-col justify-center w-[266px] h-[266px]"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, margin: "-50px" }}
+                                        transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+                                    >
+                                        <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">PEROXIDES</h3>
+                                        <p className="text-[#f5f1eb] text-sm font-semibold mb-1">4.8 meq O₂/kg</p>
+                                        <p className="text-[#f5f1eb] text-xs italic mb-2">standard &lt; 20 meq O₂/kg</p>
+                                        <p className="text-[#f5f1eb] text-xs leading-relaxed">
+                                            A measure of oxidation and freshness. This remarkably low value means the oil is stable, recently produced, and retains its full nutritional strength for longer.
+                                        </p>
+                                    </motion.div>
+                                </div>
+                            </div>
+                        </motion.div>
                     </div>
                 </section>
 

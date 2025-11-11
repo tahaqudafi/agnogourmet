@@ -6,6 +6,7 @@ import { PageTransition } from "@/components/PageTransition";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { ExternalLink } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import basketSvg from "@/assets/basket.svg";
 import oliveSvg from "@/assets/olive.svg";
 import funnelSvg from "@/assets/funnel.svg";
@@ -13,11 +14,11 @@ import oliveDropSvg from "@/assets/olivedrop.svg";
 import agnoGreenSvg from "@/assets/agnogreen.svg";
 import thasosMapImage from "@/assets/thassosmap.png";
 import islandImage from "@/assets/islandimage.png";
-import image1 from "@/assets/1.png";
-import image2 from "@/assets/2.png";
-import image3 from "@/assets/3.png";
-import image4 from "@/assets/4.png";
-import image5 from "@/assets/5.png";
+
+
+
+
+
 import oliveFarmImage from "@/assets/olivefarm.png";
 import pickingOlivesImage from "@/assets/pickingolives.png";
 import arrowSvg from "@/assets/arrow.svg";
@@ -27,6 +28,7 @@ import meetUsImage from "@/assets/meetus.png";
 
 
 const About = () => {
+    const { t, language } = useLanguage();
     const [activeCardIndex, setActiveCardIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const [timerProgress, setTimerProgress] = useState(0);
@@ -199,7 +201,7 @@ const About = () => {
                             animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
                         >
-                            About Us
+                            {t('about.hero.title')}
                         </motion.h1>
 
                     </div>
@@ -218,10 +220,10 @@ const About = () => {
                             {/* Text Content */}
                             <div className="flex-1 space-y-6">
                                 <h2 className="font-serif text-3xl md:text-4xl font-bold text-center lg:text-left" style={{ color: '#22372b' }}>
-                                    Origin: Thassos, Greece
+                                    {t('about.origin.title')}
                                 </h2>
                                 <p className="text-base md:text-lg leading-relaxed text-center lg:text-left" style={{ color: '#22372b' }}>
-                                    Our olive oil is born on Thassos, Greece, where the Aegean sun hits just right, and olive trees have been part of life for centuries. Grown by local families and pressed all within a few km away, every bottle captures the island's sun, sea, and slow living, bottled.
+                                    {t('about.origin.description')}
                                 </p>
 
                                 {/* Island Image */}
@@ -263,7 +265,7 @@ const About = () => {
                             animate={isOlivesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
                         >
-                            From Grove to Bottle
+                            {t('about.groveToBottle.title')}
                         </motion.h2>
 
                         {/* Basket and Olive Animation Container */}
@@ -313,8 +315,8 @@ const About = () => {
                                 animate={isFreshlyHarvestedInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
                                 transition={{ duration: 0.8, ease: "easeOut" }}
                             >
-                                <p className="text-lg font-serif scale-100 md:scale-[3]" style={{ color: '#22372b' }}>Freshly harvested</p>
-                                <p className="text-lg font-serif scale-100 md:scale-[3]" style={{ color: '#22372b' }}>With care</p>
+                                <p className="text-lg font-serif scale-100 md:scale-[3]" style={{ color: '#22372b' }}>{t('about.groveToBottle.freshlyHarvested')}</p>
+                                <p className="text-lg font-serif scale-100 md:scale-[3]" style={{ color: '#22372b' }}>{t('about.groveToBottle.withCare')}</p>
                             </motion.div>
                         </div>
 
@@ -331,9 +333,9 @@ const About = () => {
                                 animate={isLabTestedInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
                                 transition={{ duration: 0.8, ease: "easeOut" }}
                             >
-                                <p className="text-lg font-serif scale-100 md:scale-[2.3]" style={{ color: '#22372b' }}>Independently lab tested</p>
-                                <p className="text-lg font-serif scale-100 md:scale-[2.3]" style={{ color: '#22372b' }}>Acidity below 0.45</p>
-                                <p className="text-lg font-serif scale-100 md:scale-[2.3]" style={{ color: '#22372b' }}>& polyphenols 355 mg/kg</p>
+                                <p className="text-lg font-serif scale-100 md:scale-[2.3]" style={{ color: '#22372b' }}>{t('about.groveToBottle.labTested')}</p>
+                                <p className="text-lg font-serif scale-100 md:scale-[2.3]" style={{ color: '#22372b' }}>{t('about.groveToBottle.acidity')}</p>
+                                <p className="text-lg font-serif scale-100 md:scale-[2.3]" style={{ color: '#22372b' }}>{t('about.groveToBottle.polyphenols')}</p>
                             </motion.div>
 
                             <motion.img
@@ -394,7 +396,8 @@ const About = () => {
                             <img
                                 src={arrowSvg}
                                 alt="Arrow pointing to olive picking"
-                                className="hidden lg:block absolute top-[37%] left-[39%] transform -translate-x-1/2 -translate-y-1/2 w-[650px] h-[320px] z-10 pointer-events-none"
+                                className="hidden lg:block absolute left-[39%] transform -translate-x-1/2 -translate-y-1/2 w-[650px] h-[320px] z-10 pointer-events-none"
+                                style={{ top: language === 'de' ? '34%' : '39%' }}
                             />
 
                             {/* Mobile Arrow pointing from down to up - Mobile only */}
@@ -430,7 +433,7 @@ const About = () => {
                                 {/* Main Headline */}
                                 <div>
                                     <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-normal leading-tight mb-4" style={{ color: '#22372b' }}>
-                                        Harvested, cold-pressed, and bottled within the same season.
+                                        {t('about.ourOlives.title')}
                                     </h2>
                                 </div>
 
@@ -448,20 +451,11 @@ const About = () => {
                                     </div>
                                     <div className="flex-1 lg:pb-0">
                                         <h3 className="font-serif text-lg md:text-xl font-semibold mb-3 uppercase tracking-wide" style={{ color: '#22372b' }}>
-                                            The art of patience
+                                            {t('about.ourOlives.artOfPatience.title')}
                                         </h3>
-                                        <p className="text-sm md:text-base leading-relaxed font-mono" style={{ color: '#22372b' }}>
-                                            On the island of Thassos, time moves differently.
-                                            The air is warm with sea salt, and the Throumba olives ripen slowly under the sun, shrinking, darkening, and filling with flavor.
+                                        <p className="text-sm md:text-base leading-relaxed font-mono whitespace-pre-line" style={{ color: '#22372b' }}>
+                                            {t('about.ourOlives.artOfPatience.description')}
 
-                                            When the moment is right, we hand-pick each olive,
-                                            press it within 1-2 hours in small batches
-                                            and bottle it in the very same season.
-
-                                            Never mixed, never rushed.
-
-                                            This is how we honor the rhythm of Thassos
-                                            slow, patient, and profoundly pure.
                                         </p>
                                     </div>
                                 </div>
@@ -492,10 +486,10 @@ const About = () => {
                             transition={{ duration: 0.8, ease: "easeOut" }}
                         >
                             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6" style={{ color: '#22372b' }}>
-                                Lab Results
+                                {t('about.labResults.title')}
                             </h2>
                             <p className="text-base md:text-lg leading-relaxed mb-8" style={{ color: '#22372b' }}>
-                                You deserve food that's honest and traceable. That's why every batch of our olive oil is independently lab-tested for purity and quality, with results we proudly share with you.
+                                {t('about.labResults.description')}
                             </p>
                             <motion.a
                                 href={labTestPdf}
@@ -505,7 +499,7 @@ const About = () => {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                Link to lab results
+                                {t('about.labResults.linkText')}
                                 <ExternalLink className="w-5 h-5" />
                             </motion.a>
 
@@ -527,41 +521,41 @@ const About = () => {
                                             <div className="flex flex-col justify-center flex-1">
                                             {activeCardIndex === 0 && (
                                                 <div>
-                                                    <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">POLYPHENOLS</h3>
-                                                    <p className="text-[#f5f1eb] text-sm font-semibold mb-1 text-center">355 mg/kg (HPLC)</p>
-                                                    <p className="text-[#f5f1eb] text-xs italic mb-2 text-center">standard &gt; 180 mg/kg</p>
+                                                    <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">{t('about.labResults.polyphenols.title')}</h3>
+                                                    <p className="text-[#f5f1eb] text-sm font-semibold mb-1 text-center">{t('about.labResults.polyphenols.value')}</p>
+                                                    <p className="text-[#f5f1eb] text-xs italic mb-2 text-center">{t('about.labResults.polyphenols.standard')}</p>
                                                     <p className="text-[#f5f1eb] text-xs leading-relaxed text-center">
-                                                        Rich in bioactive antioxidants that protect your cells from oxidative stress. These natural compounds are responsible for the bold taste, vibrant aroma, and many of olive oil's scientifically proven health effects.
+                                                        {t('about.labResults.polyphenols.description')}
                                                     </p>
                                                 </div>
                                             )}
                                             {activeCardIndex === 1 && (
                                                 <div>
-                                                    <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">OLEIC ACID</h3>
-                                                    <p className="text-[#f5f1eb] text-sm font-semibold mb-1">69.71 %</p>
-                                                    <p className="text-[#f5f1eb] text-xs italic mb-2">standard ≈ 67 %</p>
+                                                    <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">{t('about.labResults.oleicAcid.title')}</h3>
+                                                    <p className="text-[#f5f1eb] text-sm font-semibold mb-1">{t('about.labResults.oleicAcid.value')}</p>
+                                                    <p className="text-[#f5f1eb] text-xs italic mb-2">{t('about.labResults.oleicAcid.standard')}</p>
                                                     <p className="text-[#f5f1eb] text-xs leading-relaxed">
-                                                        The main monounsaturated fat found in olive oil — essential for heart and brain health. A high oleic content ensures a rich texture, delicate fruitiness, and a naturally long shelf life.
+                                                        {t('about.labResults.oleicAcid.description')}
                                                     </p>
                                                 </div>
                                             )}
                                             {activeCardIndex === 2 && (
                                                 <div>
-                                                    <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">ACIDITY</h3>
-                                                    <p className="text-[#f5f1eb] text-sm font-semibold mb-1">0.42 %</p>
-                                                    <p className="text-[#f5f1eb] text-xs italic mb-2">standard &lt; 0.8 %</p>
+                                                    <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">{t('about.labResults.acidity.title')}</h3>
+                                                    <p className="text-[#f5f1eb] text-sm font-semibold mb-1">{t('about.labResults.acidity.value')}</p>
+                                                    <p className="text-[#f5f1eb] text-xs italic mb-2">{t('about.labResults.acidity.standard')}</p>
                                                     <p className="text-[#f5f1eb] text-xs leading-relaxed">
-                                                        An exceptional indicator of purity and freshness. Low acidity reflects early harvesting and gentle extraction — resulting in a smoother taste and superior stability.
+                                                        {t('about.labResults.acidity.description')}
                                                     </p>
                                                 </div>
                                             )}
                                             {activeCardIndex === 3 && (
                                                 <div>
-                                                    <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">PEROXIDES</h3>
-                                                    <p className="text-[#f5f1eb] text-sm font-semibold mb-1">4.8 meq O₂/kg</p>
-                                                    <p className="text-[#f5f1eb] text-xs italic mb-2">standard &lt; 20 meq O₂/kg</p>
+                                                    <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">{t('about.labResults.peroxides.title')}</h3>
+                                                    <p className="text-[#f5f1eb] text-sm font-semibold mb-1">{t('about.labResults.peroxides.value')}</p>
+                                                    <p className="text-[#f5f1eb] text-xs italic mb-2">{t('about.labResults.peroxides.standard')}</p>
                                                     <p className="text-[#f5f1eb] text-xs leading-relaxed">
-                                                        A measure of oxidation and freshness. This remarkably low value means the oil is stable, recently produced, and retains its full nutritional strength for longer.
+                                                        {t('about.labResults.peroxides.description')}
                                                     </p>
                                                 </div>
                                             )}
@@ -587,11 +581,11 @@ const About = () => {
                                         viewport={{ once: true, margin: "-50px" }}
                                         transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
                                     >
-                                        <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">POLYPHENOLS</h3>
-                                        <p className="text-[#f5f1eb] text-sm font-semibold mb-1 text-center">355 mg/kg (HPLC)</p>
-                                        <p className="text-[#f5f1eb] text-xs italic mb-2 text-center">standard &gt; 180 mg/kg</p>
+                                        <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">{t('about.labResults.polyphenols.title')}</h3>
+                                        <p className="text-[#f5f1eb] text-sm font-semibold mb-1 text-center">{t('about.labResults.polyphenols.value')}</p>
+                                        <p className="text-[#f5f1eb] text-xs italic mb-2 text-center">{t('about.labResults.polyphenols.standard')}</p>
                                         <p className="text-[#f5f1eb] text-xs leading-relaxed text-center">
-                                            Rich in bioactive antioxidants that protect your cells from oxidative stress. These natural compounds are responsible for the bold taste, vibrant aroma, and many of olive oil's scientifically proven health effects.
+                                            {t('about.labResults.polyphenols.description')}
                                         </p>
                                     </motion.div>
 
@@ -602,11 +596,11 @@ const About = () => {
                                         viewport={{ once: true, margin: "-50px" }}
                                         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
                                     >
-                                        <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">OLEIC ACID</h3>
-                                        <p className="text-[#f5f1eb] text-sm font-semibold mb-1">69.71 %</p>
-                                        <p className="text-[#f5f1eb] text-xs italic mb-2">standard ≈ 67 %</p>
+                                        <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">{t('about.labResults.oleicAcid.title')}</h3>
+                                        <p className="text-[#f5f1eb] text-sm font-semibold mb-1">{t('about.labResults.oleicAcid.value')}</p>
+                                        <p className="text-[#f5f1eb] text-xs italic mb-2">{t('about.labResults.oleicAcid.standard')}</p>
                                         <p className="text-[#f5f1eb] text-xs leading-relaxed">
-                                            The main monounsaturated fat found in olive oil — essential for heart and brain health. A high oleic content ensures a rich texture, delicate fruitiness, and a naturally long shelf life.
+                                            {t('about.labResults.oleicAcid.description')}
                                         </p>
                                     </motion.div>
 
@@ -617,11 +611,11 @@ const About = () => {
                                         viewport={{ once: true, margin: "-50px" }}
                                         transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
                                     >
-                                        <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">ACIDITY</h3>
-                                        <p className="text-[#f5f1eb] text-sm font-semibold mb-1">0.42 %</p>
-                                        <p className="text-[#f5f1eb] text-xs italic mb-2">standard &lt; 0.8 %</p>
+                                        <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">{t('about.labResults.acidity.title')}</h3>
+                                        <p className="text-[#f5f1eb] text-sm font-semibold mb-1">{t('about.labResults.acidity.value')}</p>
+                                        <p className="text-[#f5f1eb] text-xs italic mb-2">{t('about.labResults.acidity.standard')}</p>
                                         <p className="text-[#f5f1eb] text-xs leading-relaxed">
-                                            An exceptional indicator of purity and freshness. Low acidity reflects early harvesting and gentle extraction — resulting in a smoother taste and superior stability.
+                                            {t('about.labResults.acidity.description')}
                                         </p>
                                     </motion.div>
 
@@ -632,11 +626,11 @@ const About = () => {
                                         viewport={{ once: true, margin: "-50px" }}
                                         transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
                                     >
-                                        <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">PEROXIDES</h3>
-                                        <p className="text-[#f5f1eb] text-sm font-semibold mb-1">4.8 meq O₂/kg</p>
-                                        <p className="text-[#f5f1eb] text-xs italic mb-2">standard &lt; 20 meq O₂/kg</p>
+                                        <h3 className="font-serif text-base font-bold text-[#f5f1eb] mb-2 text-center">{t('about.labResults.peroxides.title')}</h3>
+                                        <p className="text-[#f5f1eb] text-sm font-semibold mb-1">{t('about.labResults.peroxides.value')}</p>
+                                        <p className="text-[#f5f1eb] text-xs italic mb-2">{t('about.labResults.peroxides.standard')}</p>
                                         <p className="text-[#f5f1eb] text-xs leading-relaxed">
-                                            A measure of oxidation and freshness. This remarkably low value means the oil is stable, recently produced, and retains its full nutritional strength for longer.
+                                            {t('about.labResults.peroxides.description')}
                                         </p>
                                     </motion.div>
                                 </div>
@@ -667,19 +661,19 @@ const About = () => {
                             {/* Right - Text Content */}
                             <div className="flex-1 space-y-6">
                                 <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-center lg:text-left" style={{ color: '#22372b' }}>
-                                    Meet Agnó
+                                    {t('about.meetAgno.title')}
                                 </h2>
                                 <p className="text-base md:text-lg leading-relaxed text-center lg:text-left" style={{ color: '#22372b' }}>
-                                    Hi, we are Irini and Tuğba, one with Greek roots and the other Turkish - bound by a shared love for outstanding ingredients, good food, and the Mediterranean way of life. Growing up in Germany, we were immersed in the richness of both cultures and inspired by the unique ability of food to bring people together.
+                                    {t('about.meetAgno.paragraph1')}
                                 </p>
                                 <p className="text-base md:text-lg leading-relaxed text-center lg:text-left" style={{ color: '#22372b' }}>
-                                    Our vision? Providing you with one of the most exquisite extra virgin olive oil! Partnering with a dedicated local producer and family, we discovered the magic of Thassian olive groves. Every step of the journey - from tree to bottle is steeped in authenticity, care, and love.
+                                    {t('about.meetAgno.paragraph2')}
                                 </p>
                                 <p className="text-base md:text-lg leading-relaxed text-center lg:text-left" style={{ color: '#22372b' }}>
-                                    We are proud to be part of a heritage that honors not just the land but the people who have nurtured it for generations. We welcome you to be a part of something memorable, because our olive is more than just oil.
+                                    {t('about.meetAgno.paragraph3')}
                                 </p>
                                 <p className="text-base md:text-lg font-serif font-bold text-center lg:text-left" style={{ color: '#22372b' }}>
-                                    THIS IS AGNO.
+                                    {t('about.meetAgno.tagline')}
                                 </p>
                             </div>
                         </motion.div>

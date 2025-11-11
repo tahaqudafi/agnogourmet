@@ -3,6 +3,8 @@ import { cn } from "@/lib/utils";
 import agnoLogo from "@/assets/Agno_Logo_2.png";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Navbar = () => {
   const { scrollY } = useScrollPosition();
@@ -10,9 +12,10 @@ export const Navbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { t, getLocalizedPath } = useLanguage();
 
-  // Check if we're on the homepage
-  const isHomepage = location.pathname === '/';
+  // Check if we're on the homepage (English or German)
+  const isHomepage = location.pathname === '/' || location.pathname === '/de';
   
   // Assuming hero section is roughly viewport height (100vh)
   // We'll make the navbar opaque after scrolling past 80% of viewport height
@@ -68,7 +71,7 @@ export const Navbar = () => {
         {/* Mobile Layout - Logo centered */}
         <div className="flex md:hidden items-center justify-center w-full relative">
           {/* AGNO Logo - Centered on mobile */}
-          <Link to="/" className="flex items-center">
+          <Link to={getLocalizedPath('/')} className="flex items-center">
             <img
               src={agnoLogo}
               alt="AGNO"
@@ -104,7 +107,7 @@ export const Navbar = () => {
         {/* Desktop Layout - Original layout */}
         <div className="hidden md:flex items-center justify-between w-full">
           {/* AGNO Logo */}
-          <Link to="/" className="flex items-center ml-8">
+          <Link to={getLocalizedPath('/')} className="flex items-center ml-8">
             <img
               src={agnoLogo}
               alt="AGNO"
@@ -115,16 +118,16 @@ export const Navbar = () => {
           {/* Navigation links */}
           <div className="flex items-center space-x-8">
             <Link
-              to="/products"
+              to={getLocalizedPath('/products')}
               className="text-white transition-colors duration-300 hover:opacity-80"
             >
-              Shop
+              {t('nav.shop')}
             </Link>
             <Link
-              to="/about"
+              to={getLocalizedPath('/about')}
               className="text-white transition-colors duration-300 hover:opacity-80"
             >
-              About
+              {t('nav.about')}
             </Link>
             <a
               href="https://www.agnogourmet.com/blogs/news"
@@ -132,7 +135,7 @@ export const Navbar = () => {
               rel="noopener noreferrer"
               className="text-white transition-colors duration-300 hover:opacity-80"
             >
-              Blog
+              {t('nav.blog')}
             </a>
             <a
               href="https://www.agnogourmet.com/cart"
@@ -140,8 +143,9 @@ export const Navbar = () => {
               rel="noopener noreferrer"
               className="text-white transition-colors duration-300 hover:opacity-80"
             >
-              Cart
+              {t('nav.cart')}
             </a>
+            <LanguageSwitcher />
           </div>
         </div>
 
@@ -156,15 +160,15 @@ export const Navbar = () => {
         >
           <div className="px-6 pt-4 pb-8 space-y-2">
             {[
-              { href: "/products", label: "Shop", isLink: true },
-              { href: "/about", label: "About", isLink: true },
-              { href: "https://www.agnogourmet.com/blogs/news", label: "Blog", isLink: false },
-              { href: "https://www.agnogourmet.com/cart", label: "Cart", isLink: false }
+              { href: "/products", labelKey: "nav.shop", isLink: true },
+              { href: "/about", labelKey: "nav.about", isLink: true },
+              { href: "https://www.agnogourmet.com/blogs/news", labelKey: "nav.blog", isLink: false },
+              { href: "https://www.agnogourmet.com/cart", labelKey: "nav.cart", isLink: false }
             ].map((item, index) => (
               item.isLink ? (
                 <Link
                   key={item.href}
-                  to={item.href}
+                  to={getLocalizedPath(item.href)}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
                     "block text-white transition-all duration-300 hover:opacity-80 hover:translate-x-2 py-3 px-2 rounded-lg hover:bg-white/10",
@@ -176,7 +180,7 @@ export const Navbar = () => {
                     transitionDelay: isMobileMenuOpen ? `${index * 100}ms` : '0ms'
                   }}
                 >
-                  {item.label}
+                  {t(item.labelKey)}
                 </Link>
               ) : (
                 <a
@@ -195,10 +199,15 @@ export const Navbar = () => {
                     transitionDelay: isMobileMenuOpen ? `${index * 100}ms` : '0ms'
                   }}
                 >
-                  {item.label}
+                  {t(item.labelKey)}
                 </a>
               )
             ))}
+            
+            {/* Language Switcher in Mobile Menu */}
+            <div className="pt-4 border-t border-white/10 mt-4">
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       </div>

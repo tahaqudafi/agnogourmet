@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Star } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Review {
   id: number;
@@ -148,6 +149,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
 };
 
 export const Reviews = () => {
+  const { t } = useLanguage();
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
@@ -163,7 +165,7 @@ export const Reviews = () => {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            Customer Reviews
+            {t('reviews.title')}
           </motion.h2>
           <motion.p
             className="text-lg md:text-xl max-w-3xl mx-auto"
@@ -172,7 +174,7 @@ export const Reviews = () => {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           >
-            Hear from our customers who have experienced the authentic taste of Greece.
+            {t('reviews.subtitle')}
           </motion.p>
         </div>
       </div>

@@ -3,8 +3,10 @@ import webVideo from "@/assets/web1.webm";
 import mobileVideo from "@/assets/web.mp4";
 import fallbackImage from "@/assets/lpm.png";
 import { SocialMediaIcons } from "@/components/SocialMediaIcons";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const HeroSection = () => {
+  const { t } = useLanguage();
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1440);
@@ -136,8 +138,8 @@ export const HeroSection = () => {
           }}
         >
           <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-serif leading-tight text-left">
-            Olive oil<br />
-            makes
+            {t('hero.line1')}<br />
+            {t('hero.line2')}
           </h1>
         </div>
 
@@ -148,8 +150,8 @@ export const HeroSection = () => {
           }}
         >
           <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-serif leading-tight text-right">
-            Everything<br />
-            better
+            {t('hero.line3')}<br />
+            {t('hero.line4')}
           </h1>
         </div>
       </div>

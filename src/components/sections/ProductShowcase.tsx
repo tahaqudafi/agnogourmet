@@ -3,8 +3,10 @@ import { products } from "@/data/products";
 import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const ProductShowcase = () => {
+  const { t, getLocalizedPath } = useLanguage();
   const showcaseRef = useRef(null);
   const isInView = useInView(showcaseRef, { once: true, margin: "-100px" });
 
@@ -24,7 +26,7 @@ export const ProductShowcase = () => {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            Agnó Pronunciation: /aɡˈnó/
+            {t('showcase.pronunciation')}
           </motion.h2>
           <motion.p 
             className="text-sm max-w-2xl mx-auto" 
@@ -33,7 +35,7 @@ export const ProductShowcase = () => {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           >
-            A Concept derived from the Greek word ἄγνω, meaning “pure”. it symbolizes purity, authenticity, and natural excellence, reflecting the Mediterranean lifestyle and artisanal Greek products like olive oil, oregano and honey.
+            {t('showcase.description')}
           </motion.p>
         </div>
 
@@ -51,7 +53,7 @@ export const ProductShowcase = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Link to="/products">
+          <Link to={getLocalizedPath('/products')}>
             <button 
               className="text-sm font-medium border px-6 py-2 rounded-sm hover:text-white transition-colors duration-300"
               style={{ 
@@ -68,7 +70,7 @@ export const ProductShowcase = () => {
                 e.currentTarget.style.color = '#22372b';
               }}
             >
-              View All Products
+              {t('showcase.viewAll')}
             </button>
           </Link>
         </div>

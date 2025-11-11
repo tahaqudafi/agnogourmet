@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Facebook, Instagram } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const TikTokIcon = ({ className }: { className?: string }) => (
   <svg
@@ -14,6 +15,8 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 );
 
 export const NewsletterFooter = () => {
+  const { t } = useLanguage();
+  
   return (
     <footer id="contact" className="pt-8 pb-2 px-4 md:px-8 lg:px-16" style={{ backgroundColor: '#22372b' }}>
       <div className="max-w-4xl mx-auto">
@@ -21,12 +24,12 @@ export const NewsletterFooter = () => {
         <div className="text-center mb-8">
 
           <p className="mb-8 text-lg text-white/80">
-            Join the club and enjoy the <strong>exclusive benefits of Agnó!</strong>
+            {t('newsletter.subtitle')} <strong>{t('newsletter.subtitleBold')}</strong>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <Input
               type="email"
-              placeholder="Your email address"
+              placeholder={t('newsletter.placeholder')}
               className="bg-white/10 border-white/30 text-white placeholder:text-white/50 focus:border-white/50"
             />
             <Button
@@ -34,7 +37,7 @@ export const NewsletterFooter = () => {
               size="lg"
               className="sm:w-auto whitespace-nowrap"
             >
-              Join Now
+              {t('newsletter.button')}
             </Button>
           </div>
         </div>
@@ -78,7 +81,7 @@ export const NewsletterFooter = () => {
             rel="noopener noreferrer"
             className="text-white/70 hover:text-white transition-colors duration-300"
           >
-            Privacy Policy
+            {t('newsletter.privacyPolicy')}
           </a>
           <span className="text-white/30">•</span>
           <a
@@ -87,7 +90,7 @@ export const NewsletterFooter = () => {
             rel="noopener noreferrer"
             className="text-white/70 hover:text-white transition-colors duration-300"
           >
-            Terms of Service
+            {t('newsletter.termsOfService')}
           </a>
           <span className="text-white/30">•</span>
           <a
@@ -96,7 +99,7 @@ export const NewsletterFooter = () => {
             rel="noopener noreferrer"
             className="text-white/70 hover:text-white transition-colors duration-300"
           >
-            Legal Notice
+            {t('newsletter.legalNotice')}
           </a>
           <span className="text-white/30">•</span>
           <a
@@ -105,7 +108,7 @@ export const NewsletterFooter = () => {
             rel="noopener noreferrer"
             className="text-white/70 hover:text-white transition-colors duration-300"
           >
-            Contact Information
+            {t('newsletter.contactInfo')}
           </a>
           <span className="text-white/30">•</span>
           <a
@@ -114,7 +117,7 @@ export const NewsletterFooter = () => {
             rel="noopener noreferrer"
             className="text-white/70 hover:text-white transition-colors duration-300"
           >
-            Shipping Policy
+            {t('newsletter.shippingPolicy')}
           </a>
           <span className="text-white/30">•</span>
           <a
@@ -123,7 +126,7 @@ export const NewsletterFooter = () => {
             rel="noopener noreferrer"
             className="text-white/70 hover:text-white transition-colors duration-300"
           >
-            Refund Policy
+            {t('newsletter.refundPolicy')}
           </a>
           <span className="text-white/30">•</span>
           <a
@@ -132,13 +135,13 @@ export const NewsletterFooter = () => {
             rel="noopener noreferrer"
             className="text-white/70 hover:text-white transition-colors duration-300"
           >
-            Contact
+            {t('newsletter.contact')}
           </a>
         </div>
 
         {/* Copyright */}
         <div className="text-center text-white/70 text-sm">
-          <p>© 2025 Agnó. Crafted with love and authenticity.</p>
+          <p>{t('newsletter.copyright')}</p>
         </div>
       </div>
     </footer>

@@ -5,8 +5,10 @@ import olivebasket from "@/assets/olivebasket.png";
 import lab from "@/assets/lab.png";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const OliveFacts = () => {
+  const { t } = useLanguage();
   const factsRef = useRef(null);
   const isInView = useInView(factsRef, { once: true, margin: "-100px" });
 
@@ -31,25 +33,25 @@ export const OliveFacts = () => {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            How We Guarantee Real,<br />High-Quality Olive Oil
+            {t('facts.title')}<br />{t('facts.titleLine2')}
           </motion.h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           <FactCard
             image={agnobottel}
-            title="Fresh"
-            description="We bottle only the latest harvest — because freshness is everything."
+            title={t('facts.fresh.title')}
+            description={t('facts.fresh.description')}
           />
           <FactCard
             image={olivebasket}
-            title="Not Blended"
-            description="Every bottle comes from a single region — no blends, no shortcuts."
+            title={t('facts.notBlended.title')}
+            description={t('facts.notBlended.description')}
           />
           <FactCard
             image={lab}
-            title="Third Party Lab-Tested"
-            description="Tested, verified, trusted — because you deserve the real thing."
+            title={t('facts.labTested.title')}
+            description={t('facts.labTested.description')}
           />
         </div>
       </div>

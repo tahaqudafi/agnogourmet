@@ -9,8 +9,10 @@ import { NewsletterFooter } from "@/components/sections/NewsletterFooter";
 import { ProductsShippingMarquee } from "@/components/sections/ProductsShippingMarquee";
 import pomoImage from "@/assets/pomo.jpeg";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Products = () => {
+    const { t } = useLanguage();
     const [selectedCategory, setSelectedCategory] = useState<string>('all');
     const [currentSlide, setCurrentSlide] = useState(0);
     const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -32,11 +34,11 @@ const Products = () => {
     }, [selectedCategory]);
 
     const categories = [
-        { id: 'all', label: 'All Products' },
-        { id: 'olive-oil', label: 'Olive Oil' },
-        { id: 'honey', label: 'Honey' },
-        { id: 'spices', label: 'Spices' },
-        { id: 'gifts', label: 'Gifts & more' }
+        { id: 'all', labelKey: 'products.category.all' },
+        { id: 'olive-oil', labelKey: 'products.category.oliveOil' },
+        { id: 'honey', labelKey: 'products.category.honey' },
+        { id: 'spices', labelKey: 'products.category.spices' },
+        { id: 'gifts', labelKey: 'products.category.gifts' }
     ];
 
     const filteredProducts = selectedCategory === 'all'
@@ -121,7 +123,7 @@ const Products = () => {
                             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
                         >
-                            Our Collection
+                            {t('products.hero.title')}
                         </motion.h1>
                         <motion.p
                             className="text-lg md:text-xl max-w-3xl mx-auto mb-12"
@@ -130,7 +132,7 @@ const Products = () => {
                             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                         >
-                            From olive groves and wild hives to mountain herbs, each creation is antioxidant-rich, full of flavor, and made in small batches by local farmers who live by nature’s rhythm.
+                            {t('products.hero.subtitle')}
                         </motion.p>
                     </div>
                 </section>
@@ -151,7 +153,7 @@ const Products = () => {
                                         backgroundColor: selectedCategory === category.id ? '#22372b' : undefined
                                     }}
                                 >
-                                    {category.label}
+                                    {t(category.labelKey)}
                                 </button>
                             ))}
                         </div>
@@ -178,7 +180,7 @@ const Products = () => {
                         {filteredProducts.length === 0 && (
                             <div className="text-center py-16">
                                 <p className="text-xl" style={{ color: '#22372b' }}>
-                                    No products found in this category.
+                                    {t('products.noProducts')}
                                 </p>
                             </div>
                         )}
@@ -266,7 +268,7 @@ const Products = () => {
                         ) : (
                             <div className="text-center py-16">
                                 <p className="text-xl" style={{ color: '#22372b' }}>
-                                    No products found in this category.
+                                    {t('products.noProducts')}
                                 </p>
                             </div>
                         )}
@@ -284,7 +286,7 @@ const Products = () => {
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             viewport={{ once: true }}
                         >
-                            Coming Soon
+                            {t('products.comingSoon.title')}
                         </motion.h2>
                         <motion.p
                             className="text-lg md:text-xl mb-8"
@@ -294,8 +296,7 @@ const Products = () => {
                             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                             viewport={{ once: true }}
                         >
-                            We're constantly expanding our collection with new authentic Greek treasures.
-                            Stay tuned for exciting additions to our Mediterranean family.
+                            {t('products.comingSoon.subtitle')}
                         </motion.p>
 
                         <motion.div
@@ -317,30 +318,30 @@ const Products = () => {
                             {/* Product Information Card */}
                             <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-white/30 shadow-lg flex-1">
                                 <h3 className="font-serif text-2xl md:text-3xl font-bold mb-6" style={{ color: '#22372b' }}>
-                                    Pomegranate molasses from the Aegean
+                                    {t('products.comingSoon.pomo.title')}
                                 </h3>
 
                                 <div className="space-y-4 text-left">
                                     <p className="text-base" style={{ color: '#22372b' }}>
-                                        <strong>100% pure pomegranate juice with no additives</strong>
+                                        <strong>{t('products.comingSoon.pomo.feature1')}</strong>
                                     </p>
                                     <p className="text-base" style={{ color: '#22372b' }}>
-                                        Slowly simmered at low temperature for an intense flavor
+                                        {t('products.comingSoon.pomo.feature2')}
                                     </p>
                                     <p className="text-base" style={{ color: '#22372b' }}>
-                                        Sweet and tangy taste with a deep fruity aroma
+                                        {t('products.comingSoon.pomo.feature3')}
                                     </p>
                                     <p className="text-base" style={{ color: '#22372b' }}>
-                                        Rich in antioxidants
+                                        {t('products.comingSoon.pomo.feature4')}
                                     </p>
                                     <p className="text-base" style={{ color: '#22372b' }}>
-                                        Rarely found in Germany
+                                        {t('products.comingSoon.pomo.feature5')}
                                     </p>
                                     <p className="text-base" style={{ color: '#22372b' }}>
-                                        Perfect for salads, marinades, appetizers, or desserts
+                                        {t('products.comingSoon.pomo.feature6')}
                                     </p>
                                     <p className="text-base font-semibold mt-6" style={{ color: '#22372b' }}>
-                                        Available from 2026
+                                        {t('products.comingSoon.pomo.available')}
                                     </p>
                                 </div>
                             </div>

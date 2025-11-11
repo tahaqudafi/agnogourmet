@@ -2,32 +2,12 @@ import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-interface FAQItem {
-    question: string;
-    answer: string;
-}
-
-const faqData: FAQItem[] = [
-    {
-        question: "Where does your olive oil come from?",
-        answer: "Our olive oil is born on the island of Thassos, Greece, where olive trees have thrived for centuries under the Aegean sun. Each drop reflects the island’s purity and time-honored tradition — cold-extracted and bottled close to harvest for the freshest, most authentic taste."
-    },
-    {
-        question: "What makes your extra virgin olive oil with rosemary and spices special?",
-        answer: "We use only the rare Throumba olive, native to Thassos and celebrated for its naturally high polyphenol content and low acidity. Each olive is hand-picked at peak ripeness, pressed within hours, and never blended — ensuring a full-bodied flavor and remarkable freshness in every bottle."
-    },
-    {
-        question: "What makes your honey unique?",
-        answer: "Our honey is harvested from the pine trees of Thassos, Greece. It’s naturally rich in nutrients, has a robust flavor, and is free from any additives, making it an authentic Greek treasure."
-    },
-    {
-        question: "Where do you source your oregano?",
-        answer: "Every batch is third-party lab-tested to guarantee purity, freshness, and key quality markers such as polyphenol levels and acidity. This transparency ensures you always enjoy genuine, high-grade extra virgin olive oil — just as nature intended."
-    }
-];
+const faqKeys = ['q1', 'q2', 'q3', 'q4'];
 
 export const FAQ = () => {
+    const { t } = useLanguage();
     const [openItems, setOpenItems] = useState<number[]>([]);
 
     const toggleItem = (index: number) => {
@@ -44,15 +24,15 @@ export const FAQ = () => {
                 {/* Header */}
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#22372b' }}>
-                        You've got questions? We've got the answers.
+                        {t('faq.title')}
                     </h2>
                 </div>
 
                 {/* FAQ Items */}
                 <div className="space-y-4 mb-8">
-                    {faqData.map((item, index) => (
+                    {faqKeys.map((key, index) => (
                         <div
-                            key={index}
+                            key={key}
                             className="border border-gray-200 rounded-lg overflow-hidden shadow-sm"
                         >
                             <button
@@ -60,7 +40,7 @@ export const FAQ = () => {
                                 className="w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
                             >
                                 <span className="font-medium text-gray-900 pr-4">
-                                    {item.question}
+                                    {t(`faq.${key}`)}
                                 </span>
                                 {openItems.includes(index) ? (
                                     <ChevronUp className="w-5 h-5 text-gray-500 flex-shrink-0" />
@@ -76,7 +56,7 @@ export const FAQ = () => {
                             >
                                 <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
                                     <p className="text-gray-700 whitespace-pre-line leading-relaxed">
-                                        {item.answer}
+                                        {t(`faq.a${index + 1}`)}
                                     </p>
                                 </div>
                             </div>
@@ -98,7 +78,7 @@ export const FAQ = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            View All
+                            {t('faq.viewAll')}
                         </a>
                     </Button>
                 </div>

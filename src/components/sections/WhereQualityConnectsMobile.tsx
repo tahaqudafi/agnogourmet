@@ -4,8 +4,10 @@ import tideSvg from "@/assets/tid.svg";
 import wyldSvg from "@/assets/wyl.svg";
 import annaSvg from "@/assets/ANNA.svg";
 import bloomSvg from "@/assets/bloo.svg";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const WhereQualityConnectsMobile = () => {
+  const { t } = useLanguage();
   const brands = [
     { src: violasSvg, alt: "Violas", className: "h-6 lg:h-7" }, // 143mm x 29mm - very wide
     { src: tideSvg, alt: "Tide", className: "h-8 lg:h-9" }, // 144mm x 66mm - tallest
@@ -23,7 +25,7 @@ export const WhereQualityConnectsMobile = () => {
             className="font-serif text-xl font-normal leading-tight"
             style={{ color: '#22372b' }}
           >
-            Where quality connects
+            {t('about.whereQualityConnects')}
           </h2>
         </div>
 

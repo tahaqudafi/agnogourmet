@@ -4,8 +4,10 @@ import tidSvg from "@/assets/tid.svg";
 import wylSvg from "@/assets/wyl.svg";
 import annSvg from "@/assets/ANNA.svg";
 import blooSvg from "@/assets/bloo.svg";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const WhereQualityConnectsDesktop = () => {
+  const { t } = useLanguage();
   const brands = [
     { src: violaSvg, alt: "Violas", className: "h-6 lg:h-7" }, // 143mm x 29mm - very wide
     { src: tidSvg, alt: "Tide", className: "h-8 lg:h-9" }, // 144mm x 66mm - tallest
@@ -23,7 +25,7 @@ export const WhereQualityConnectsDesktop = () => {
             className="font-serif text-2xl md:text-2.5xl lg:text-3xl font-normal leading-tight"
             style={{ color: '#22372b' }}
           >
-            Where quality connects
+            {t('about.whereQualityConnects')}
           </h2>
         </div>
 

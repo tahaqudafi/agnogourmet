@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ProductCardProps {
   image: string;
@@ -10,6 +11,8 @@ interface ProductCardProps {
 }
 
 export const ProductCard = ({ image, name, description, volume, purchaseLink }: ProductCardProps) => {
+  const { t } = useLanguage();
+  
   return (
     <Card className="group bg-white border-0 shadow-sm hover:shadow-lg transition-all duration-300 rounded-2xl flex flex-col h-full w-full max-w-xs mx-auto overflow-hidden">
       <div className="aspect-[4/5] bg-gray-50 flex items-center justify-center rounded-t-2xl">
@@ -39,7 +42,7 @@ export const ProductCard = ({ image, name, description, volume, purchaseLink }: 
               className="w-full font-medium mt-6 rounded-xl text-white hover:opacity-90 transition-opacity duration-300"
               style={{ backgroundColor: '#22372B' }}
             >
-              Shop Now
+              {t('products.shopNow')}
             </Button>
           </a>
         ) : (
@@ -49,7 +52,7 @@ export const ProductCard = ({ image, name, description, volume, purchaseLink }: 
             className="w-full font-medium mt-6 rounded-xl text-white hover:opacity-90 transition-opacity duration-300"
             style={{ backgroundColor: '#22372B' }}
           >
-            Shop Now
+            {t('products.shopNow')}
           </Button>
         )}
       </div>

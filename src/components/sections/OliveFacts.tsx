@@ -39,17 +39,17 @@ export const OliveFacts = () => {
           <FactCard
             image={agnobottel}
             title="Fresh"
-            description="We give you oil from the latest harvest, because fresher = better."
+            description="We bottle only the latest harvest — because freshness is everything."
           />
           <FactCard
             image={olivebasket}
             title="Not Blended"
-            description="Every bottle comes from just one region – no blends, no sneaky stuff."
+            description="Every bottle comes from a single region — no blends, no shortcuts."
           />
           <FactCard
             image={lab}
             title="Third Party Lab-Tested"
-            description="We third party lab-test the olive oil to ensure you get the real deal."
+            description="Tested, verified, trusted — because you deserve the real thing."
           />
         </div>
       </div>

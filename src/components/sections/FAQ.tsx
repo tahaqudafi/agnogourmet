@@ -11,19 +11,19 @@ interface FAQItem {
 const faqData: FAQItem[] = [
     {
         question: "Where does your olive oil come from?",
-        answer: "Our olive oil is sourced from the pristine island of Thassos, Greece, renowned for its centuries-old olive groves. It's crafted with care to ensure the highest quality and freshest taste."
+        answer: "Our olive oil is born on the island of Thassos, Greece, where olive trees have thrived for centuries under the Aegean sun. Each drop reflects the island’s purity and time-honored tradition — cold-extracted and bottled close to harvest for the freshest, most authentic taste."
     },
     {
         question: "What makes your extra virgin olive oil with rosemary and spices special?",
-        answer: "Our extra virgin olive oil is naturally infused with rosemary and spices, creating a unique flavor profile. The composition includes:\n\n• 95.5% pure olive oil\n• 2% cinnamon\n• 1.5% rosemary\n• 0.5% pepper granules\n• 0.3% chili pepper\n• 0.2% bay leaves\n\nThis combination offers a delightful Mediterranean essence, perfect for enhancing your dishes."
+        answer: "We use only the rare Throumba olive, native to Thassos and celebrated for its naturally high polyphenol content and low acidity. Each olive is hand-picked at peak ripeness, pressed within hours, and never blended — ensuring a full-bodied flavor and remarkable freshness in every bottle."
     },
     {
         question: "What makes your honey unique?",
-        answer: "Our honey is harvested from the pine trees of Thassos, Greece. It's naturally rich in nutrients, has a robust flavor, and is free from any additives, making it an authentic Greek treasure."
+        answer: "Our honey is harvested from the pine trees of Thassos, Greece. It’s naturally rich in nutrients, has a robust flavor, and is free from any additives, making it an authentic Greek treasure."
     },
     {
         question: "Where do you source your oregano?",
-        answer: "Our wild oregano is hand-picked from the mountainous regions of Crete, Greece. Its bold aroma and flavor are a testament to the Mediterranean sun and soil."
+        answer: "Every batch is third-party lab-tested to guarantee purity, freshness, and key quality markers such as polyphenol levels and acidity. This transparency ensures you always enjoy genuine, high-grade extra virgin olive oil — just as nature intended."
     }
 ];
 

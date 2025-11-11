@@ -23,6 +23,7 @@ import pickingOlivesImage from "@/assets/pickingolives.png";
 import arrowSvg from "@/assets/arrow.svg";
 import arrowMobSvg from "@/assets/ARROWMOB.svg";
 import labTestPdf from "@/assets/LabTest2025.pdf";
+import meetUsImage from "@/assets/meetus.png";
 
 
 const About = () => {
@@ -639,6 +640,47 @@ const About = () => {
                                         </p>
                                     </motion.div>
                                 </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                </section>
+
+                {/* Meet Agnó Section */}
+                <section className="py-16 px-4 md:px-8 lg:px-16 bg-[#f5f1eb]">
+                    <div className="max-w-6xl mx-auto">
+                        <motion.div
+                            className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                        >
+                            {/* Left - Image */}
+                            <div className="flex-1 flex justify-center lg:justify-start">
+                                <img
+                                    src={meetUsImage}
+                                    alt="Irini and Tuğba - Founders of Agnó"
+                                    className="w-full max-w-md h-auto object-cover rounded-2xl"
+                                />
+                            </div>
+
+                            {/* Right - Text Content */}
+                            <div className="flex-1 space-y-6">
+                                <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-center lg:text-left" style={{ color: '#22372b' }}>
+                                    Meet Agnó
+                                </h2>
+                                <p className="text-base md:text-lg leading-relaxed text-center lg:text-left" style={{ color: '#22372b' }}>
+                                    Hi, we are Irini and Tuğba, one with Greek roots and the other Turkish - bound by a shared love for outstanding ingredients, good food, and the Mediterranean way of life. Growing up in Germany, we were immersed in the richness of both cultures and inspired by the unique ability of food to bring people together.
+                                </p>
+                                <p className="text-base md:text-lg leading-relaxed text-center lg:text-left" style={{ color: '#22372b' }}>
+                                    Our vision? Providing you with one of the most exquisite extra virgin olive oil! Partnering with a dedicated local producer and family, we discovered the magic of Thassian olive groves. Every step of the journey - from tree to bottle is steeped in authenticity, care, and love.
+                                </p>
+                                <p className="text-base md:text-lg leading-relaxed text-center lg:text-left" style={{ color: '#22372b' }}>
+                                    We are proud to be part of a heritage that honors not just the land but the people who have nurtured it for generations. We welcome you to be a part of something memorable, because our olive is more than just oil.
+                                </p>
+                                <p className="text-base md:text-lg font-serif font-bold text-center lg:text-left" style={{ color: '#22372b' }}>
+                                    THIS IS AGNO.
+                                </p>
                             </div>
                         </motion.div>
                     </div>
